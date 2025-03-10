@@ -1,5 +1,5 @@
 
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 const techStack = [
@@ -51,22 +51,65 @@ const steps = [
 const Process = () => {
   const marqueeRef = useRef<HTMLDivElement>(null);
   
+  // Control animation speed based on viewport width
+  useEffect(() => {
+    const handleResize = () => {
+      const container = marqueeRef.current;
+      if (!container) return;
+      
+      // Adjust animation duration based on screen size
+      const animationDuration = window.innerWidth < 768 ? '30s' : '45s';
+      const children = container.querySelectorAll('.marquee-content');
+      
+      children.forEach((child) => {
+        if (child instanceof HTMLElement) {
+          child.style.animationDuration = animationDuration;
+        }
+      });
+    };
+    
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
   return (
     <section id="process" className="section-spacing relative overflow-hidden">
-      {/* Tech stack marquee */}
-      <div className="py-12 bg-gradient-to-r from-accent/10 to-primary/10 overflow-hidden">
-        <div className="marquee-container" ref={marqueeRef}>
+      {/* Tech stack marquee with premium gradient and reflections */}
+      <div className="py-12 relative overflow-hidden">
+        {/* Gradient background with smooth transitions */}
+        <div className="absolute inset-0 bg-gradient-to-r from-accent/5 via-primary/10 to-accent/5 opacity-70"></div>
+        
+        {/* Subtle glow effects */}
+        <div className="absolute top-1/2 left-1/4 w-32 h-32 rounded-full bg-accent/20 blur-[80px] -translate-y-1/2"></div>
+        <div className="absolute top-1/2 right-1/4 w-32 h-32 rounded-full bg-primary/20 blur-[80px] -translate-y-1/2"></div>
+        
+        <div className="marquee-container relative" ref={marqueeRef}>
           <div className="marquee-content">
             {techStack.map((tech, index) => (
-              <div key={index} className="flex-none mx-4 py-2 px-6 glass-card rounded-full">
-                {tech}
+              <div 
+                key={index} 
+                className="tech-item flex-none mx-4 py-3 px-6 glass-card rounded-full relative group transition-all duration-300 hover:bg-white/10 hover:-translate-y-1"
+              >
+                {/* Tech name with reflection */}
+                <span className="relative z-10">{tech}</span>
+                
+                {/* Bottom reflection/shadow effect */}
+                <div className="absolute bottom-0 left-1/2 w-4/5 h-[1px] bg-white/10 -translate-x-1/2 blur-[1px] opacity-70 group-hover:opacity-100 transition-opacity"></div>
               </div>
             ))}
           </div>
           <div className="marquee-content">
             {techStack.map((tech, index) => (
-              <div key={`dup-${index}`} className="flex-none mx-4 py-2 px-6 glass-card rounded-full">
-                {tech}
+              <div 
+                key={`dup-${index}`} 
+                className="tech-item flex-none mx-4 py-3 px-6 glass-card rounded-full relative group transition-all duration-300 hover:bg-white/10 hover:-translate-y-1"
+              >
+                {/* Tech name with reflection */}
+                <span className="relative z-10">{tech}</span>
+                
+                {/* Bottom reflection/shadow effect */}
+                <div className="absolute bottom-0 left-1/2 w-4/5 h-[1px] bg-white/10 -translate-x-1/2 blur-[1px] opacity-70 group-hover:opacity-100 transition-opacity"></div>
               </div>
             ))}
           </div>
@@ -74,6 +117,7 @@ const Process = () => {
       </div>
       
       <div className="max-container mt-20">
+        {/* Process section content */}
         <div className="text-center mb-16">
           <span className="text-sm text-accent">How We Work</span>
           <h2 className="text-3xl md:text-4xl font-bold mt-2">Our Process</h2>

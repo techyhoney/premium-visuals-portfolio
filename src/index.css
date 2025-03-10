@@ -86,11 +86,29 @@
   }
 
   .marquee-container {
-    @apply flex overflow-hidden whitespace-nowrap;
+    @apply flex overflow-hidden relative whitespace-nowrap;
   }
 
   .marquee-content {
-    @apply flex animate-marquee;
+    @apply flex min-w-full animate-marquee;
+    animation: marquee 45s linear infinite;
+  }
+
+  .marquee-content:hover {
+    animation-play-state: paused;
+  }
+
+  .tech-item {
+    @apply relative overflow-hidden backdrop-blur-md;
+  }
+
+  .tech-item::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 transition-opacity duration-300;
+  }
+
+  .tech-item:hover::before {
+    @apply opacity-100;
   }
 
   .flex-center {
@@ -100,4 +118,9 @@
   .flex-between {
     @apply flex items-center justify-between;
   }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
 }
