@@ -1,5 +1,5 @@
 
-import { Code, ShoppingBag, Laptop, Cpu } from "lucide-react";
+import { Code, ShoppingBag, Laptop, Cpu, Bot } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const services = [
@@ -22,6 +22,12 @@ const services = [
     technologies: ["Shopify", "Liquid", "Hydrogen", "Oxygen", "Headless"]
   },
   {
+    icon: <Bot className="h-10 w-10 text-primary" />,
+    title: "Business Chatbots",
+    description: "Intelligent conversational AI systems that engage customers, answer queries, and streamline support operations.",
+    technologies: ["GPT-4", "DialogFlow", "Rasa", "Botpress", "NLP"]
+  },
+  {
     icon: <Cpu className="h-10 w-10 text-primary" />,
     title: "AI Automation",
     description: "Integrate cutting-edge AI solutions to automate workflows and create intelligent user experiences.",
@@ -41,7 +47,7 @@ const Services = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <div 
               key={index}
