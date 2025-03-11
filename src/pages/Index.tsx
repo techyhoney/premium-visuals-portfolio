@@ -11,6 +11,7 @@ import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import { TechStackScroll } from "@/components/TechStackScroll";
 
 const Index = () => {
   return (
@@ -27,6 +28,19 @@ const Index = () => {
       <Portfolio />
       <Process />
       <Comparison />
+      
+      {/* Tech Stack Section - Full Width */}
+      <section className="py-20 w-full bg-gradient-to-br from-primary/10 via-background to-accent/5 relative overflow-hidden">
+        <div className="text-center mb-10 max-w-7xl mx-auto px-4">
+          <span className="text-sm text-accent">Our Technology Stack</span>
+          <h2 className="text-3xl md:text-4xl font-bold mt-2">Powered by Modern Technologies</h2>
+          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+            We leverage cutting-edge tools and frameworks to build robust, scalable solutions.
+          </p>
+        </div>
+        <TechStackScroll />
+      </section>
+      
       <About />
       <Pricing />
       <Testimonials />

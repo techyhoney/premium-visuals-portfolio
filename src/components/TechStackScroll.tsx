@@ -25,6 +25,10 @@ const techStack: TechStack[] = [
   { name: "Angular", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg", color: "#DD0031" },
   { name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg", color: "#47A248" },
   { name: "Sass", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg", color: "#CC6699" },
+  { name: "TailwindCSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg", color: "#38B2AC" },
+  { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg", color: "#FF9900" },
+  { name: "Firebase", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg", color: "#FFCA28" },
+  { name: "Redis", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg", color: "#DC382D" },
 ];
 
 // Duplicate stack for seamless infinite scrolling
@@ -36,6 +40,10 @@ export const TechStackScroll = () => {
   return (
     <div className="w-full overflow-hidden py-14">
       <div className="relative">
+        {/* Enhanced subtle glow effects */}
+        <div className="absolute top-1/2 left-1/4 w-48 h-48 rounded-full bg-accent/20 blur-[100px] -translate-y-1/2"></div>
+        <div className="absolute top-1/2 right-1/4 w-48 h-48 rounded-full bg-primary/20 blur-[100px] -translate-y-1/2"></div>
+        
         {/* Primary row - scrolling left to right */}
         <motion.div
           className="flex gap-12 mb-12"

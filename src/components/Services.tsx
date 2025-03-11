@@ -1,6 +1,7 @@
 
 import { Code, ShoppingBag, Laptop, Cpu, Bot } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 const services = [
   {
@@ -35,6 +36,51 @@ const services = [
   },
 ];
 
+const ServicesCard = ({ service, index }: { service: typeof services[0], index: number }) => {
+  return (
+    <motion.div
+      className="relative group"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      whileHover={{ y: -8 }}
+    >
+      <div className="absolute inset-0 bg-accent/5 rounded-xl blur-xl group-hover:bg-accent/10 transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
+      <div className="glass-card p-8 rounded-xl relative overflow-hidden border border-white/10 backdrop-blur-xl group-hover:border-white/20 transition-all duration-300">
+        {/* Premium reflection effect */}
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+        <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+        <div className="absolute left-0 inset-y-0 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
+        <div className="absolute right-0 inset-y-0 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
+        
+        {/* Icon with enhanced glow */}
+        <motion.div 
+          className="mb-4 relative"
+          whileHover={{ scale: 1.05 }}
+          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        >
+          <div className="absolute inset-0 bg-accent/20 rounded-full blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
+          {service.icon}
+        </motion.div>
+        
+        <h3 className="text-xl font-semibold mb-3 group-hover:text-white transition-colors">{service.title}</h3>
+        <p className="text-muted-foreground mb-6 group-hover:text-white/80 transition-colors">{service.description}</p>
+        
+        <div className="flex flex-wrap gap-2">
+          {service.technologies.map((tech, techIndex) => (
+            <span 
+              key={techIndex} 
+              className="text-xs py-1 px-3 rounded-full bg-white/5 text-muted-foreground group-hover:bg-white/10 group-hover:text-white/90 transition-all duration-300"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 const Services = () => {
   return (
     <section id="services" className="section-spacing relative">
@@ -49,29 +95,7 @@ const Services = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div 
-              key={index}
-              className={cn(
-                "glass-card p-8 rounded-xl transition-all duration-300 hover:translate-y-[-5px]",
-                "group cursor-pointer"
-              )}
-            >
-              <div className="mb-4">
-                {service.icon}
-              </div>
-              <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-              <p className="text-muted-foreground mb-6">{service.description}</p>
-              <div className="flex flex-wrap gap-2">
-                {service.technologies.map((tech, techIndex) => (
-                  <span 
-                    key={techIndex} 
-                    className="text-xs py-1 px-3 rounded-full bg-white/5 text-muted-foreground"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
+            <ServicesCard key={index} service={service} index={index} />
           ))}
         </div>
       </div>

@@ -14,7 +14,7 @@ const userAvatars = [
 
 const Hero = () => {
   return (
-    <section className="min-h-screen pt-32 pb-16 relative overflow-hidden flex items-center">
+    <section className="min-h-screen pt-40 pb-16 relative overflow-hidden flex items-center">
       {/* Premium gradient background */}
       <div className="absolute inset-0 bg-[#080A16] bg-opacity-95 -z-20" />
       <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-background to-primary/5 -z-10" />
@@ -72,12 +72,12 @@ const Hero = () => {
           className="mt-12 flex flex-col sm:flex-row gap-6 items-center"
         >
           <div className="flex flex-col items-center">
-            <Button className="glass-button h-12 px-8 text-md relative overflow-hidden group rainbow-border-glow">
+            <Button className="glass-button h-14 px-10 text-md relative overflow-hidden group rainbow-border-glow rounded-full">
               <PhoneCall className="mr-2 h-4 w-4 relative z-10" />
               <span className="relative z-10">Book a Call</span>
               <div className="absolute inset-0 bg-white/10 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
             </Button>
-            <span className="text-xs text-accent/90 mt-2 font-medium">It's free!</span>
+            <span className="text-xs text-white mt-2 font-medium">It's free!</span>
           </div>
           <Button 
             variant="link" 
@@ -96,11 +96,11 @@ const Hero = () => {
         >
           <div className="flex flex-col items-center gap-4">
             {/* Avatar Stack */}
-            <div className="flex -space-x-3 relative">
+            <div className="flex -space-x-4 relative">
               {userAvatars.map((avatar, index) => (
                 <motion.div
                   key={index}
-                  className={`relative z-[${10 - index}] w-12 h-12 rounded-full border-2 border-background overflow-hidden shadow-md`}
+                  className={`relative z-[${10 - index}] w-14 h-14 rounded-full border-2 border-background overflow-hidden shadow-lg`}
                   whileHover={{ scale: 1.15, translateY: -5 }}
                   transition={{ duration: 0.2 }}
                 >
@@ -118,7 +118,7 @@ const Hero = () => {
               
               {/* More users indicator */}
               <motion.div
-                className="relative z-0 w-12 h-12 rounded-full border-2 border-background overflow-hidden glass-card flex items-center justify-center shadow-md"
+                className="relative z-0 w-14 h-14 rounded-full border-2 border-background overflow-hidden glass-card flex items-center justify-center shadow-lg"
                 whileHover={{ scale: 1.15, translateY: -5 }}
                 transition={{ duration: 0.2 }}
               >
