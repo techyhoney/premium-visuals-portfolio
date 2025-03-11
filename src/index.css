@@ -163,6 +163,48 @@
   .transform-style-3d {
     transform-style: preserve-3d;
   }
+  
+  /* Rainbow border glow animation for the CTA button */
+  .rainbow-border-glow {
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+  }
+  
+  .rainbow-border-glow::before {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    inset: -3px;
+    background: conic-gradient(
+      from 0deg,
+      #ff4d4d,
+      #f9cb28,
+      #4cd263,
+      #5e9fff,
+      #a17fff,
+      #ff4d4d
+    );
+    background-size: 200% 200%;
+    animation: rainbow-border 4s linear infinite;
+    opacity: 0.5;
+    filter: blur(8px);
+    border-radius: inherit;
+  }
+  
+  .rainbow-border-glow::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 1px;
+    background: inherit;
+    border-radius: inherit;
+  }
+  
+  @keyframes rainbow-border {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 200% 0%; }
+  }
 }
 
 @keyframes marquee {
@@ -180,3 +222,4 @@
     @apply bg-background text-foreground;
   }
 }
+

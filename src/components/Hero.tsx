@@ -1,16 +1,15 @@
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, PhoneCall } from "lucide-react";
 import { motion } from "framer-motion";
 
-// User avatar data - gradient backgrounds to simulate avatars
+// Real user avatar data with images
 const userAvatars = [
-  { gradient: "from-blue-500 to-purple-500" },
-  { gradient: "from-green-500 to-teal-500" },
-  { gradient: "from-rose-500 to-pink-500" },
-  { gradient: "from-amber-500 to-orange-500" },
-  { gradient: "from-indigo-500 to-blue-500" },
+  { image: "https://originui.com/avatar-80-03.jpg" },
+  { image: "https://originui.com/avatar-80-04.jpg" },
+  { image: "https://originui.com/avatar-80-05.jpg" },
+  { image: "https://originui.com/avatar-80-06.jpg" },
 ];
 
 const Hero = () => {
@@ -72,11 +71,14 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.7 }}
           className="mt-12 flex flex-col sm:flex-row gap-6 items-center"
         >
-          <Button className="glass-button h-12 px-8 text-md relative overflow-hidden group">
-            <span className="relative z-10">View Our Work</span>
-            <ArrowRight className="ml-2 h-4 w-4 relative z-10" />
-            <div className="absolute inset-0 bg-white/10 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-          </Button>
+          <div className="flex flex-col items-center">
+            <Button className="glass-button h-12 px-8 text-md relative overflow-hidden group rainbow-border-glow">
+              <PhoneCall className="mr-2 h-4 w-4 relative z-10" />
+              <span className="relative z-10">Book a Call</span>
+              <div className="absolute inset-0 bg-white/10 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+            </Button>
+            <span className="text-xs text-accent/90 mt-2 font-medium">It's free!</span>
+          </div>
           <Button 
             variant="link" 
             className="text-muted-foreground hover:text-white transition-colors duration-300"
@@ -92,37 +94,45 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.9 }}
           className="mt-24"
         >
-          <p className="text-sm text-muted-foreground mb-6">Trusted by 60K+ developers</p>
-          
-          <div className="flex justify-center">
+          <div className="flex flex-col items-center gap-4">
             {/* Avatar Stack */}
             <div className="flex -space-x-3 relative">
               {userAvatars.map((avatar, index) => (
                 <motion.div
                   key={index}
-                  className={`relative z-[${10 - index}] w-10 h-10 rounded-full border-2 border-background overflow-hidden bg-gradient-to-br ${avatar.gradient}`}
+                  className={`relative z-[${10 - index}] w-12 h-12 rounded-full border-2 border-background overflow-hidden shadow-md`}
                   whileHover={{ scale: 1.15, translateY: -5 }}
                   transition={{ duration: 0.2 }}
                 >
-                  {/* Placeholder for actual user images */}
-                  <div className="w-full h-full opacity-80"></div>
+                  <img 
+                    src={avatar.image} 
+                    alt={`User avatar ${index + 1}`} 
+                    className="w-full h-full object-cover"
+                  />
                   
                   {/* Reflection effect */}
                   <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent opacity-70" 
-                       style={{ clipPath: "polygon(0 0, 100% 0, 100% 30%, 0 30%)" }}></div>
+                      style={{ clipPath: "polygon(0 0, 100% 0, 100% 30%, 0 30%)" }}></div>
                 </motion.div>
               ))}
               
               {/* More users indicator */}
               <motion.div
-                className="relative z-0 w-10 h-10 rounded-full border-2 border-background overflow-hidden glass-card flex items-center justify-center"
+                className="relative z-0 w-12 h-12 rounded-full border-2 border-background overflow-hidden glass-card flex items-center justify-center shadow-md"
                 whileHover={{ scale: 1.15, translateY: -5 }}
                 transition={{ duration: 0.2 }}
               >
                 <span className="text-xs font-medium">+50K</span>
                 <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent opacity-50" 
-                     style={{ clipPath: "polygon(0 0, 100% 0, 100% 30%, 0 30%)" }}></div>
+                    style={{ clipPath: "polygon(0 0, 100% 0, 100% 30%, 0 30%)" }}></div>
               </motion.div>
+            </div>
+            
+            {/* Rating */}
+            <div className="flex items-center gap-2">
+              <p className="text-sm font-medium text-white">4.8/5</p>
+              <span className="text-yellow-400 text-sm">★★★★★</span>
+              <p className="text-sm text-muted-foreground">rating</p>
             </div>
           </div>
         </motion.div>

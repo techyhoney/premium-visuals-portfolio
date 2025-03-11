@@ -44,20 +44,21 @@ const steps = [
 const Process = () => {
   return (
     <section id="process" className="section-spacing relative overflow-hidden">
-      {/* Tech stack section with premium styling */}
+      {/* Tech stack section with premium styling - full width */}
       <div className="relative w-full overflow-hidden bg-gradient-to-br from-primary/10 via-background to-accent/5">
         {/* Section title */}
-        <div className="text-center pt-12 pb-6">
+        <div className="text-center pt-12 pb-6 max-w-7xl mx-auto px-4">
           <span className="text-sm text-accent">Our Technology Stack</span>
           <h2 className="text-3xl font-bold mt-2">Powered by Modern Technologies</h2>
-          <p className="text-muted-foreground mt-2 max-w-2xl mx-auto px-4">
+          <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">
             We leverage cutting-edge tools and frameworks to build robust, scalable solutions.
           </p>
         </div>
         
-        {/* Subtle glow effects */}
-        <div className="absolute top-1/2 left-1/4 w-32 h-32 rounded-full bg-accent/20 blur-[80px] -translate-y-1/2"></div>
-        <div className="absolute top-1/2 right-1/4 w-32 h-32 rounded-full bg-primary/20 blur-[80px] -translate-y-1/2"></div>
+        {/* Enhanced subtle glow effects */}
+        <div className="absolute top-1/2 left-1/4 w-48 h-48 rounded-full bg-accent/20 blur-[100px] -translate-y-1/2"></div>
+        <div className="absolute top-1/2 right-1/4 w-48 h-48 rounded-full bg-primary/20 blur-[100px] -translate-y-1/2"></div>
+        <div className="absolute top-1/3 left-1/2 w-32 h-32 rounded-full bg-primary/15 blur-[80px] -translate-x-1/2"></div>
         
         {/* Tech Stack Scroll component */}
         <TechStackScroll />
