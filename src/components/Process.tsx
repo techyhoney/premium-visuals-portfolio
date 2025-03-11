@@ -1,6 +1,7 @@
 
 import { useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { TechStackScroll } from "./TechStackScroll";
 
 const steps = [
   {
@@ -43,7 +44,7 @@ const steps = [
 const Process = () => {
   return (
     <section id="process" className="section-spacing relative overflow-hidden">
-      {/* Tech stack cloud with premium gradient and reflections */}
+      {/* Tech stack scroll with premium gradient and reflections */}
       <div className="py-12 relative overflow-hidden">
         {/* Gradient background with smooth transitions */}
         <div className="absolute inset-0 bg-gradient-to-r from-accent/5 via-primary/10 to-accent/5 opacity-70"></div>
@@ -51,6 +52,9 @@ const Process = () => {
         {/* Subtle glow effects */}
         <div className="absolute top-1/2 left-1/4 w-32 h-32 rounded-full bg-accent/20 blur-[80px] -translate-y-1/2"></div>
         <div className="absolute top-1/2 right-1/4 w-32 h-32 rounded-full bg-primary/20 blur-[80px] -translate-y-1/2"></div>
+        
+        {/* Add our new Tech Stack component */}
+        <TechStackScroll />
       </div>
       
       <div className="max-container mt-20">
