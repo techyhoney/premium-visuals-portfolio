@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -148,6 +147,15 @@
 
   .reflection-glow {
     @apply after:content-[''] after:absolute after:w-60 after:h-60 after:rounded-full after:bg-primary/20 after:blur-[100px] after:opacity-30;
+  }
+
+  /* 3D Cloud styles */
+  .perspective-[1000px] {
+    perspective: 1000px;
+  }
+
+  .transform-style-3d {
+    transform-style: preserve-3d;
   }
 }
 
