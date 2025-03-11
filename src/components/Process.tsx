@@ -1,15 +1,6 @@
 
 import { useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import TechCloud from "./ui/TechCloud";
-
-const techStack = [
-  "React", "Next.js", "TypeScript", "Node.js", "GraphQL", "Tailwind CSS", 
-  "Framer Motion", "Shopify", "Webflow", "Firebase", "AWS", "MongoDB", 
-  "PostgreSQL", "Redux", "Zustand", "React Query", "Jest", "Cypress",
-  "Docker", "Kubernetes", "Stripe", "Vercel", "Netlify", "Auth0",
-  "Storybook", "Figma", "Adobe XD", "Sketch", "Postman", "Git",
-];
 
 const steps = [
   {
@@ -60,9 +51,6 @@ const Process = () => {
         {/* Subtle glow effects */}
         <div className="absolute top-1/2 left-1/4 w-32 h-32 rounded-full bg-accent/20 blur-[80px] -translate-y-1/2"></div>
         <div className="absolute top-1/2 right-1/4 w-32 h-32 rounded-full bg-primary/20 blur-[80px] -translate-y-1/2"></div>
-        
-        {/* Replace marquee with 3D tech cloud */}
-        <TechCloud technologies={techStack} />
       </div>
       
       <div className="max-container mt-20">

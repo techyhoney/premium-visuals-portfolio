@@ -42,6 +42,12 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    --gradient-color: #8350e8;
+    --sparkles-color: #8350e8;
+  }
+  .dark {
+    --gradient-color: #8350e8;
+    --sparkles-color: #ffffff;
   }
 }
 
@@ -162,4 +168,15 @@
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-100%); }
+}
+
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
