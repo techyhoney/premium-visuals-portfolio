@@ -4,6 +4,15 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
+// User avatar data - gradient backgrounds to simulate avatars
+const userAvatars = [
+  { gradient: "from-blue-500 to-purple-500" },
+  { gradient: "from-green-500 to-teal-500" },
+  { gradient: "from-rose-500 to-pink-500" },
+  { gradient: "from-amber-500 to-orange-500" },
+  { gradient: "from-indigo-500 to-blue-500" },
+];
+
 const Hero = () => {
   return (
     <section className="min-h-screen pt-32 pb-16 relative overflow-hidden flex items-center">
@@ -76,26 +85,45 @@ const Hero = () => {
           </Button>
         </motion.div>
         
-        {/* Social Proof */}
+        {/* Testimonial Avatars Section */}
         <motion.div 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.9 }}
           className="mt-24"
         >
-          <p className="text-sm text-muted-foreground mb-6">Trusted by forward-thinking companies</p>
-          <div className="flex flex-wrap justify-center gap-8">
-            {['Company A', 'Company B', 'Company C', 'Company D'].map((company, index) => (
-              <motion.div 
-                key={index}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3, delay: 1 + index * 0.1 }}
-                className="h-12 flex items-center justify-center glass-card px-8 py-2"
+          <p className="text-sm text-muted-foreground mb-6">Trusted by 60K+ developers</p>
+          
+          <div className="flex justify-center">
+            {/* Avatar Stack */}
+            <div className="flex -space-x-3 relative">
+              {userAvatars.map((avatar, index) => (
+                <motion.div
+                  key={index}
+                  className={`relative z-[${10 - index}] w-10 h-10 rounded-full border-2 border-background overflow-hidden bg-gradient-to-br ${avatar.gradient}`}
+                  whileHover={{ scale: 1.15, translateY: -5 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {/* Placeholder for actual user images */}
+                  <div className="w-full h-full opacity-80"></div>
+                  
+                  {/* Reflection effect */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent opacity-70" 
+                       style={{ clipPath: "polygon(0 0, 100% 0, 100% 30%, 0 30%)" }}></div>
+                </motion.div>
+              ))}
+              
+              {/* More users indicator */}
+              <motion.div
+                className="relative z-0 w-10 h-10 rounded-full border-2 border-background overflow-hidden glass-card flex items-center justify-center"
+                whileHover={{ scale: 1.15, translateY: -5 }}
+                transition={{ duration: 0.2 }}
               >
-                <span className="text-sm text-muted-foreground">{company}</span>
+                <span className="text-xs font-medium">+50K</span>
+                <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent opacity-50" 
+                     style={{ clipPath: "polygon(0 0, 100% 0, 100% 30%, 0 30%)" }}></div>
               </motion.div>
-            ))}
+            </div>
           </div>
         </motion.div>
       </div>

@@ -44,16 +44,22 @@ const steps = [
 const Process = () => {
   return (
     <section id="process" className="section-spacing relative overflow-hidden">
-      {/* Tech stack scroll with premium gradient and reflections */}
-      <div className="py-12 relative overflow-hidden">
-        {/* Gradient background with smooth transitions */}
-        <div className="absolute inset-0 bg-gradient-to-r from-accent/5 via-primary/10 to-accent/5 opacity-70"></div>
+      {/* Tech stack section with premium styling */}
+      <div className="relative w-full overflow-hidden bg-gradient-to-br from-primary/10 via-background to-accent/5">
+        {/* Section title */}
+        <div className="text-center pt-12 pb-6">
+          <span className="text-sm text-accent">Our Technology Stack</span>
+          <h2 className="text-3xl font-bold mt-2">Powered by Modern Technologies</h2>
+          <p className="text-muted-foreground mt-2 max-w-2xl mx-auto px-4">
+            We leverage cutting-edge tools and frameworks to build robust, scalable solutions.
+          </p>
+        </div>
         
         {/* Subtle glow effects */}
         <div className="absolute top-1/2 left-1/4 w-32 h-32 rounded-full bg-accent/20 blur-[80px] -translate-y-1/2"></div>
         <div className="absolute top-1/2 right-1/4 w-32 h-32 rounded-full bg-primary/20 blur-[80px] -translate-y-1/2"></div>
         
-        {/* Add our new Tech Stack component */}
+        {/* Tech Stack Scroll component */}
         <TechStackScroll />
       </div>
       
