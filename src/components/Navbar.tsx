@@ -49,7 +49,7 @@ const Navbar = () => {
           }}
         >
           <TicketPercent className="h-4 w-4 mr-2 text-accent" />
-          <span>✨ Summer Special! 20% off all services until August 31st ✨</span>
+          <span>🔥 Summer Special! 20% off all services until August 31st</span>
           <Sparkles className="h-4 w-4 ml-2 text-accent" />
         </motion.div>
       </motion.div>
