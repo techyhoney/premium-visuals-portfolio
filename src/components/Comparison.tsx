@@ -6,6 +6,7 @@ const comparisonData = {
   categories: [
     {
       name: "Expertise",
+      emoji: "🚀",
       features: [
         "Custom Development",
         "No-Code Solutions",
@@ -16,22 +17,13 @@ const comparisonData = {
     },
     {
       name: "Quality",
+      emoji: "✨",
       features: [
         "Premium Design",
         "Exceptional UX",
         "Fast Performance",
         "Responsive Interfaces",
         "SEO Optimization"
-      ]
-    },
-    {
-      name: "Service",
-      features: [
-        "Dedicated Team",
-        "24/7 Support",
-        "Transparent Process",
-        "Weekly Updates",
-        "Post-Launch Support"
       ]
     }
   ],
@@ -98,7 +90,7 @@ const Comparison = () => {
                 <th className="text-left pb-6 pl-4"></th>
                 <th className="pb-6">
                   <div className="glass-card rounded-lg py-3 px-4 text-center">
-                    <span className="text-gradient font-bold">StellarDev</span>
+                    <span className="text-gradient font-bold">✨ StellarDev</span>
                   </div>
                 </th>
                 {comparisonData.competitors.map((competitor, index) => (
@@ -121,7 +113,7 @@ const Comparison = () => {
                         categoryIndex > 0 ? "border-t border-white/5" : ""
                       )}
                     >
-                      {category.name}
+                      {category.emoji} {category.name}
                     </td>
                   </tr>
                   {category.features.map((feature, featureIndex) => (

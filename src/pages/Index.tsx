@@ -38,7 +38,7 @@ const Index = () => {
       <Process />
       <Comparison />
       
-      {/* Tech Stack Section - Full Width */}
+      {/* Tech Stack Section - Moved below Comparison */}
       <section className="py-20 w-full bg-gradient-to-br from-primary/10 via-background to-accent/5 relative overflow-hidden">
         <div className="text-center mb-10 max-w-7xl mx-auto px-4">
           <span className="text-sm text-accent">Our Technology Stack</span>

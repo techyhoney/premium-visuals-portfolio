@@ -50,7 +50,7 @@ export const TechStackScroll = () => {
           animate={{ x: [0, -1 * techStack.length * 180] }}
           transition={{
             x: {
-              duration: 40,
+              duration: 70, // Increased duration for slower scroll
               repeat: Infinity,
               repeatType: "loop",
               ease: "linear",
@@ -110,7 +110,7 @@ export const TechStackScroll = () => {
           animate={{ x: [-1 * techStack.length * 180, 0] }}
           transition={{
             x: {
-              duration: 45,
+              duration: 80, // Increased duration for slower scroll
               repeat: Infinity,
               repeatType: "loop",
               ease: "linear",

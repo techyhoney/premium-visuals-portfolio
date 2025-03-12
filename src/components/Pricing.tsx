@@ -1,58 +1,133 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const pricingPlans = [
-  {
-    title: "Startup",
-    description: "Perfect for early-stage startups and small businesses.",
-    price: "$5,000+",
-    features: [
-      "Custom web design",
-      "Responsive development",
-      "Basic SEO setup",
-      "1 month of support",
-      "Up to 5 pages"
-    ],
-    popular: false
-  },
-  {
-    title: "Business",
-    description: "For growing businesses with more complex requirements.",
-    price: "$12,000+",
-    features: [
-      "Premium UI/UX design",
-      "Responsive development",
-      "E-commerce integration",
-      "Advanced SEO setup",
-      "3 months of support",
-      "Up to 15 pages",
-      "Content management system"
-    ],
-    popular: true
-  },
-  {
-    title: "Enterprise",
-    description: "Comprehensive solutions for large-scale projects.",
-    price: "Custom",
-    features: [
-      "Custom application development",
-      "Advanced integration options",
-      "Dedicated project manager",
-      "Performance optimization",
-      "6 months of support",
-      "Unlimited pages",
-      "Custom functionality",
-      "User testing & research"
-    ],
-    popular: false
-  }
-];
+// Pricing plans with separate USD and INR values
+const pricingPlansData = {
+  usd: [
+    {
+      title: "Startup",
+      description: "Perfect for early-stage startups and small businesses.",
+      price: "$5,000+",
+      features: [
+        "Custom web design",
+        "Responsive development",
+        "Basic SEO setup",
+        "1 month of support",
+        "Up to 5 pages"
+      ],
+      popular: false
+    },
+    {
+      title: "Business",
+      description: "For growing businesses with more complex requirements.",
+      price: "$12,000+",
+      features: [
+        "Premium UI/UX design",
+        "Responsive development",
+        "E-commerce integration",
+        "Advanced SEO setup",
+        "3 months of support",
+        "Up to 15 pages",
+        "Content management system"
+      ],
+      popular: true
+    },
+    {
+      title: "Enterprise",
+      description: "Comprehensive solutions for large-scale projects.",
+      price: "Custom",
+      features: [
+        "Custom application development",
+        "Advanced integration options",
+        "Dedicated project manager",
+        "Performance optimization",
+        "6 months of support",
+        "Unlimited pages",
+        "Custom functionality",
+        "User testing & research"
+      ],
+      popular: false
+    }
+  ],
+  inr: [
+    {
+      title: "Startup",
+      description: "Perfect for early-stage startups and small businesses.",
+      price: "₹3,75,000+",
+      features: [
+        "Custom web design",
+        "Responsive development",
+        "Basic SEO setup",
+        "1 month of support",
+        "Up to 5 pages"
+      ],
+      popular: false
+    },
+    {
+      title: "Business",
+      description: "For growing businesses with more complex requirements.",
+      price: "₹9,00,000+",
+      features: [
+        "Premium UI/UX design",
+        "Responsive development",
+        "E-commerce integration",
+        "Advanced SEO setup",
+        "3 months of support",
+        "Up to 15 pages",
+        "Content management system"
+      ],
+      popular: true
+    },
+    {
+      title: "Enterprise",
+      description: "Comprehensive solutions for large-scale projects.",
+      price: "Custom",
+      features: [
+        "Custom application development",
+        "Advanced integration options",
+        "Dedicated project manager",
+        "Performance optimization",
+        "6 months of support",
+        "Unlimited pages",
+        "Custom functionality",
+        "User testing & research"
+      ],
+      popular: false
+    }
+  ]
+};
 
 const Pricing = () => {
   const [showAnnual, setShowAnnual] = useState(false);
+  const [isIndianUser, setIsIndianUser] = useState(false);
+  const [pricingPlans, setPricingPlans] = useState(pricingPlansData.usd);
+  
+  useEffect(() => {
+    // Function to detect user's country
+    const detectUserCountry = async () => {
+      try {
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+        if (data.country === 'IN') {
+          setIsIndianUser(true);
+          setPricingPlans(pricingPlansData.inr);
+        } else {
+          setIsIndianUser(false);
+          setPricingPlans(pricingPlansData.usd);
+        }
+      } catch (error) {
+        // Fallback to USD if detection fails
+        console.error('Could not detect location:', error);
+        setIsIndianUser(false);
+        setPricingPlans(pricingPlansData.usd);
+      }
+    };
+    
+    detectUserCountry();
+  }, []);
   
   return (
     <section id="pricing" className="section-spacing relative overflow-hidden">
@@ -63,6 +138,11 @@ const Pricing = () => {
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
             Choose a pricing plan that fits your needs. We offer flexible options for businesses of all sizes.
           </p>
+          
+          {/* Currency indicator */}
+          <div className="mt-4 inline-block px-4 py-2 bg-accent/10 rounded-full text-sm">
+            <span>Prices shown in {isIndianUser ? '₹ INR' : '$ USD'}</span>
+          </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -128,6 +129,10 @@ export default {
 				'shimmer': {
 					'0%': { backgroundPosition: '-200% 0' },
 					'100%': { backgroundPosition: '200% 0' }
+				},
+				'pulse-soft': {
+					'0%, 100%': { opacity: '0.7' },
+					'50%': { opacity: '1' }
 				}
 			},
 			animation: {
@@ -139,7 +144,8 @@ export default {
 				'marquee': 'marquee 45s linear infinite',
 				'modal-in': 'modal-in 0.3s ease-out',
 				'modal-out': 'modal-out 0.2s ease-in',
-				'shimmer': 'shimmer 2s infinite linear'
+				'shimmer': 'shimmer 2s infinite linear',
+				'pulse-soft': 'pulse-soft 2s ease-in-out infinite'
 			}
 		}
 	},
