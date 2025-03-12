@@ -1,8 +1,9 @@
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, PhoneCall } from "lucide-react";
+import { PhoneCall } from "lucide-react";
 import { motion } from "framer-motion";
+import CurvyArrow from "./CurvyArrow";
 
 // Real user avatar data with images
 const userAvatars = [
@@ -51,6 +52,10 @@ const Hero = () => {
       
       {/* Top gradient reflection */}
       <div className="absolute top-0 left-0 right-0 h-60 bg-gradient-to-b from-accent/20 to-transparent blur-2xl -z-10" />
+      
+      {/* Tublight effect at the top middle */}
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-80 bg-accent/30 blur-[80px] rounded-full opacity-80 -z-10" />
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-48 h-40 bg-white/20 blur-[40px] rounded-full opacity-60 -z-10" />
       
       {/* Decorative elements with premium reflections */}
       <div className="absolute top-20 right-[5%] w-96 h-96 rounded-full bg-accent/10 blur-[120px] animate-pulse -z-10" />
@@ -136,21 +141,8 @@ const Hero = () => {
             </Button>
             <span className="text-xs text-white mt-2 font-medium">It's free!</span>
             
-            {/* Animated Arrow pointing to "It's free!" text */}
-            <motion.div 
-              className="absolute -right-16 top-12"
-              animate={{ 
-                y: [0, -5, 0],
-                opacity: [0.7, 1, 0.7]
-              }}
-              transition={{ 
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            >
-              <ArrowDown className="text-accent h-5 w-5" />
-            </motion.div>
+            {/* Custom Curvy Animated Arrow */}
+            <CurvyArrow />
           </div>
           <Button 
             variant="link" 

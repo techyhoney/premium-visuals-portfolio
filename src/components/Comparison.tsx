@@ -1,29 +1,59 @@
 
-import { Check, X } from "lucide-react";
+import { Check, X, Code, Palette, ShoppingCart, BrainCircuit, Laptop, Gauge, ScreenShare, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const comparisonData = {
   categories: [
     {
       name: "Expertise",
-      emoji: "🚀",
+      icon: <Code className="w-5 h-5 text-accent" />,
       features: [
-        "Custom Development",
-        "No-Code Solutions",
-        "Shopify Development",
-        "AI Integration",
-        "UI/UX Design"
+        {
+          name: "Custom Development",
+          icon: <Code className="w-4 h-4 text-white/80" />
+        },
+        {
+          name: "No-Code Solutions",
+          icon: <Laptop className="w-4 h-4 text-white/80" />
+        },
+        {
+          name: "Shopify Development",
+          icon: <ShoppingCart className="w-4 h-4 text-white/80" />
+        },
+        {
+          name: "AI Integration",
+          icon: <BrainCircuit className="w-4 h-4 text-white/80" />
+        },
+        {
+          name: "UI/UX Design",
+          icon: <Palette className="w-4 h-4 text-white/80" />
+        }
       ]
     },
     {
       name: "Quality",
-      emoji: "✨",
+      icon: <Gauge className="w-5 h-5 text-accent" />,
       features: [
-        "Premium Design",
-        "Exceptional UX",
-        "Fast Performance",
-        "Responsive Interfaces",
-        "SEO Optimization"
+        {
+          name: "Premium Design",
+          icon: <Palette className="w-4 h-4 text-white/80" />
+        },
+        {
+          name: "Exceptional UX",
+          icon: <ScreenShare className="w-4 h-4 text-white/80" />
+        },
+        {
+          name: "Fast Performance",
+          icon: <Gauge className="w-4 h-4 text-white/80" />
+        },
+        {
+          name: "Responsive Interfaces",
+          icon: <Laptop className="w-4 h-4 text-white/80" />
+        },
+        {
+          name: "SEO Optimization",
+          icon: <Search className="w-4 h-4 text-white/80" />
+        }
       ]
     }
   ],
@@ -41,11 +71,6 @@ const comparisonData = {
         "Fast Performance": false,
         "Responsive Interfaces": true,
         "SEO Optimization": true,
-        "Dedicated Team": false,
-        "24/7 Support": false,
-        "Transparent Process": false,
-        "Weekly Updates": true,
-        "Post-Launch Support": false,
       }
     },
     {
@@ -61,11 +86,6 @@ const comparisonData = {
         "Fast Performance": false,
         "Responsive Interfaces": true,
         "SEO Optimization": false,
-        "Dedicated Team": false,
-        "24/7 Support": false,
-        "Transparent Process": true,
-        "Weekly Updates": false,
-        "Post-Launch Support": false,
       }
     }
   ]
@@ -109,11 +129,11 @@ const Comparison = () => {
                     <td 
                       colSpan={3} 
                       className={cn(
-                        "pt-8 pb-4 pl-4 font-medium text-lg",
+                        "pt-8 pb-4 pl-4 font-medium text-lg flex items-center gap-2",
                         categoryIndex > 0 ? "border-t border-white/5" : ""
                       )}
                     >
-                      {category.emoji} {category.name}
+                      {category.icon} {category.name}
                     </td>
                   </tr>
                   {category.features.map((feature, featureIndex) => (
@@ -121,7 +141,9 @@ const Comparison = () => {
                       key={`feature-${categoryIndex}-${featureIndex}`}
                       className="border-t border-white/5"
                     >
-                      <td className="py-4 pl-4 text-muted-foreground">{feature}</td>
+                      <td className="py-4 pl-4 text-muted-foreground flex items-center gap-2">
+                        {feature.icon} {feature.name}
+                      </td>
                       <td className="py-4 text-center">
                         <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-accent/20 text-accent">
                           <Check size={16} />
@@ -129,7 +151,7 @@ const Comparison = () => {
                       </td>
                       {comparisonData.competitors.map((competitor, competitorIndex) => (
                         <td key={competitorIndex} className="py-4 text-center">
-                          {competitor.features[feature] ? (
+                          {competitor.features[feature.name] ? (
                             <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white/10 text-muted-foreground">
                               <Check size={16} />
                             </span>

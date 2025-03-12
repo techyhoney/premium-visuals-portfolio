@@ -12,8 +12,8 @@ const Footer = () => {
   
   return (
     <footer className="bg-black/20 border-t border-white/5 py-16 relative overflow-hidden">
-      {/* Company name watermark */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none">
+      {/* Company name watermark - positioned lower to avoid text overlap */}
+      <div className="absolute inset-0 flex items-center justify-center translate-y-16 opacity-[0.03] pointer-events-none">
         <span className="text-[20vw] font-bold tracking-tight text-white whitespace-nowrap">
           StellarDev
         </span>
@@ -46,30 +46,30 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-5 text-lg">Services</h4>
             <ul className="space-y-3">
-              <li><a href="#services" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">✨ Custom Web Development</a></li>
-              <li><a href="#services" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">🧩 No-Code Solutions</a></li>
-              <li><a href="#services" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">🛒 Shopify Development</a></li>
-              <li><a href="#services" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">🤖 AI Automation</a></li>
+              <li><a href="#services" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">Custom Web Development</a></li>
+              <li><a href="#services" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">No-Code Solutions</a></li>
+              <li><a href="#services" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">Shopify Development</a></li>
+              <li><a href="#services" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">AI Automation</a></li>
             </ul>
           </div>
           
           <div>
             <h4 className="font-semibold mb-5 text-lg">Company</h4>
             <ul className="space-y-3">
-              <li><a href="#about" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">👋 About</a></li>
-              <li><a href="#portfolio" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">🏆 Portfolio</a></li>
-              <li><a href="#process" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">📈 Process</a></li>
-              <li><a href="#faq" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">❓ FAQ</a></li>
+              <li><a href="#about" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">About</a></li>
+              <li><a href="#portfolio" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">Portfolio</a></li>
+              <li><a href="#process" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">Process</a></li>
+              <li><a href="#faq" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">FAQ</a></li>
             </ul>
           </div>
           
           <div>
             <h4 className="font-semibold mb-5 text-lg">Contact</h4>
             <ul className="space-y-3">
-              <li><a href="#contact" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">📞 Schedule a Call</a></li>
-              <li><a href="mailto:hello@stellardev.com" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">📧 hello@stellardev.com</a></li>
-              <li><a href="tel:+15551234567" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">📱 +1 (555) 123-4567</a></li>
-              <li><span className="text-muted-foreground text-sm">🌎 San Francisco, CA</span></li>
+              <li><a href="#contact" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">Schedule a Call</a></li>
+              <li><a href="mailto:hello@stellardev.com" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">hello@stellardev.com</a></li>
+              <li><a href="tel:+15551234567" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">+1 (555) 123-4567</a></li>
+              <li><span className="text-muted-foreground text-sm">San Francisco, CA</span></li>
             </ul>
           </div>
         </div>
