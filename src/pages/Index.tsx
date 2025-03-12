@@ -22,6 +22,9 @@ const Index = () => {
       <div className="absolute top-1/2 right-1/5 reflection-dot" style={{ top: '45%', right: '20%' }}></div>
       <div className="absolute bottom-1/3 left-1/4 reflection-glow" style={{ bottom: '30%', left: '10%' }}></div>
       
+      {/* Main gradient backdrop for all sections */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-accent/5 -z-30"></div>
+      
       <Navbar />
       <Hero />
       <Services />
@@ -41,11 +44,32 @@ const Index = () => {
         <TechStackScroll />
       </section>
       
-      <About />
-      <Pricing />
-      <Testimonials />
-      <FAQ />
-      <Contact />
+      {/* Apply subtle background gradients to all remaining sections */}
+      <div className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-tr from-accent/5 via-background to-primary/5 -z-20"></div>
+        <About />
+      </div>
+      
+      <div className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-bl from-primary/5 via-background to-accent/5 -z-20"></div>
+        <Pricing />
+      </div>
+      
+      <div className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-tr from-accent/5 via-background to-primary/5 -z-20"></div>
+        <Testimonials />
+      </div>
+      
+      <div className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-bl from-primary/5 via-background to-accent/5 -z-20"></div>
+        <FAQ />
+      </div>
+      
+      <div className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-tr from-accent/5 via-background to-primary/5 -z-20"></div>
+        <Contact />
+      </div>
+      
       <Footer />
     </div>
   );

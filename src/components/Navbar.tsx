@@ -30,28 +30,37 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Announcement Banner */}
-      <div className="w-full py-2.5 bg-accent/10 border-b border-white/5 backdrop-blur-sm">
+      {/* Sticky Announcement Banner */}
+      <motion.div 
+        className="fixed w-full py-2.5 bg-accent/15 border-b border-white/5 backdrop-blur-md z-50"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
         <motion.div 
           className="flex justify-center items-center text-sm text-white px-4"
-          initial={{ opacity: 0.8 }}
-          animate={{ opacity: [0.8, 1, 0.8] }}
-          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+          animate={{ 
+            opacity: [0.8, 1, 0.8],
+            scale: [1, 1.02, 1]
+          }}
+          transition={{ 
+            duration: 3, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
         >
           <TicketPercent className="h-4 w-4 mr-2 text-accent" />
           <span>✨ Summer Special! 20% off all services until August 31st ✨</span>
           <Sparkles className="h-4 w-4 ml-2 text-accent" />
         </motion.div>
-      </div>
+      </motion.div>
       
       <header 
         className={cn(
-          "fixed top-0 w-full z-50 transition-all duration-300",
+          "fixed top-8 w-full z-40 transition-all duration-300",
           isScrolled 
             ? "py-4 backdrop-blur-lg bg-background/80 border-b border-white/5" 
             : "py-6 bg-transparent"
         )}
-        style={{ top: "32px" }} // Offset for the announcement banner
       >
         <div className="max-container flex-between">
           <div className="flex-center">
