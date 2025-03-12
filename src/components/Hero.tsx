@@ -3,7 +3,6 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { PhoneCall } from "lucide-react";
 import { motion } from "framer-motion";
-import CurvyArrow from "./CurvyArrow";
 
 // Real user avatar data with images
 const userAvatars = [
@@ -133,16 +132,13 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.7 }}
           className="mt-12 flex flex-col sm:flex-row gap-6 items-center"
         >
-          <div className="flex flex-col items-center relative">
+          <div className="flex flex-col items-center">
             <Button className="glass-button h-14 px-10 text-md relative overflow-hidden group rainbow-border-glow rounded-full">
               <PhoneCall className="mr-2 h-4 w-4 relative z-10" />
               <span className="relative z-10">Book a Call</span>
               <div className="absolute inset-0 bg-white/10 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
             </Button>
             <span className="text-xs text-white mt-2 font-medium">It's free!</span>
-            
-            {/* Custom Curvy Animated Arrow */}
-            <CurvyArrow />
           </div>
           <Button 
             variant="link" 

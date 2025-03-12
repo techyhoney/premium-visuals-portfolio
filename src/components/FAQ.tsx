@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const faqs = [
   {
@@ -45,58 +46,116 @@ const FAQ = () => {
     setOpenIndex(openIndex === index ? null : index);
   };
   
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+  
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+  
+  const contentVariants = {
+    hidden: { opacity: 0, height: 0 },
+    visible: { 
+      opacity: 1, 
+      height: "auto",
+      transition: {
+        duration: 0.3
+      }
+    }
+  };
+  
   return (
     <section id="faq" className="section-spacing relative">
       <div className="max-container">
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.6 }}
+        >
           <span className="text-sm text-accent">FAQ</span>
           <h2 className="text-3xl md:text-4xl font-bold mt-2">Frequently Asked Questions</h2>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
             Find answers to common questions about our services, process, and pricing.
           </p>
-        </div>
+        </motion.div>
         
-        <div className="max-w-3xl mx-auto">
+        <motion.div 
+          className="max-w-3xl mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={containerVariants}
+        >
           {faqs.map((faq, index) => (
-            <div 
+            <motion.div 
               key={index} 
               className={cn(
                 "mb-4 glass-card rounded-xl overflow-hidden",
                 "transition-all duration-300"
               )}
+              variants={itemVariants}
+              whileHover={{ scale: 1.01 }}
             >
               <button
                 className="w-full px-6 py-4 text-left flex justify-between items-center"
                 onClick={() => toggleFaq(index)}
               >
                 <span className="font-medium">{faq.question}</span>
-                <ChevronDown 
-                  size={20} 
-                  className={cn(
-                    "transition-transform duration-300",
-                    openIndex === index ? "transform rotate-180" : ""
-                  )} 
-                />
+                <motion.div
+                  animate={{
+                    rotate: openIndex === index ? 180 : 0
+                  }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ChevronDown size={20} />
+                </motion.div>
               </button>
-              <div 
-                className={cn(
-                  "overflow-hidden transition-all duration-300",
-                  openIndex === index ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+              <AnimatePresence>
+                {openIndex === index && (
+                  <motion.div 
+                    initial="hidden"
+                    animate="visible"
+                    exit="hidden"
+                    variants={contentVariants}
+                  >
+                    <div className="px-6 pb-4 text-muted-foreground">
+                      {faq.answer}
+                    </div>
+                  </motion.div>
                 )}
-              >
-                <div className="px-6 pb-4 text-muted-foreground">
-                  {faq.answer}
-                </div>
-              </div>
-            </div>
+              </AnimatePresence>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
         
-        <div className="text-center mt-12">
+        <motion.div 
+          className="text-center mt-12"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
           <p className="text-muted-foreground">
             Still have questions? <a href="#contact" className="text-primary hover:underline">Contact us</a> for more information.
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

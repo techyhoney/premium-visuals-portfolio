@@ -30,9 +30,9 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Sticky Announcement Banner */}
+      {/* Sticky Announcement Banner - Hidden on mobile */}
       <motion.div 
-        className="fixed w-full py-2.5 bg-accent/15 border-b border-white/5 backdrop-blur-md z-50"
+        className="fixed w-full py-2.5 bg-accent/15 border-b border-white/5 backdrop-blur-md z-50 hidden sm:block"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
@@ -56,7 +56,7 @@ const Navbar = () => {
       
       <header 
         className={cn(
-          "fixed top-8 w-full z-40 transition-all duration-300",
+          "fixed top-0 sm:top-8 w-full z-40 transition-all duration-300",
           isScrolled 
             ? "py-4 backdrop-blur-lg bg-background/80 border-b border-white/5" 
             : "py-6 bg-transparent"
