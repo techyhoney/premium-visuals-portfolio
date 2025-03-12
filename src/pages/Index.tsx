@@ -28,7 +28,13 @@ const Index = () => {
       <Navbar />
       <Hero />
       <Services />
-      <Portfolio />
+      
+      {/* Portfolio Section with Enhanced Reflections */}
+      <div className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-background to-accent/10 -z-20"></div>
+        <Portfolio />
+      </div>
+      
       <Process />
       <Comparison />
       
