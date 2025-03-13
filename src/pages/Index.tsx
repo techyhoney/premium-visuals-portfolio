@@ -10,6 +10,7 @@ import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import { TechStackScroll } from "@/components/TechStackScroll";
 
 const Index = () => {
   return (
@@ -45,29 +46,41 @@ const Index = () => {
       <Process />
       <Comparison />
       
-      {/* Apply vibrant background gradients to all remaining sections */}
+      {/* Tech Stack Section - Moved below Comparison */}
+      <section className="py-20 w-full bg-gradient-to-br from-primary/10 via-background to-accent/5 relative overflow-hidden">
+        <div className="text-center mb-10 max-w-7xl mx-auto px-4">
+          <span className="text-sm text-accent">Our Technology Stack</span>
+          <h2 className="text-3xl md:text-4xl font-bold mt-2">Powered by Modern Technologies</h2>
+          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+            We leverage cutting-edge tools and frameworks to build robust, scalable solutions.
+          </p>
+        </div>
+        <TechStackScroll />
+      </section>
+      
+      {/* Apply subtle background gradients to all remaining sections */}
       <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-tr from-fuchsia-500/10 via-background to-blue-500/10 -z-20"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-accent/5 via-background to-primary/5 -z-20"></div>
         <About />
       </div>
       
       <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-bl from-cyan-500/10 via-background to-pink-500/10 -z-20"></div>
+        <div className="absolute inset-0 bg-gradient-to-bl from-primary/5 via-background to-accent/5 -z-20"></div>
         <Pricing />
       </div>
       
       <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/10 via-background to-purple-500/10 -z-20"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-accent/5 via-background to-primary/5 -z-20"></div>
         <Testimonials />
       </div>
       
       <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-bl from-amber-500/10 via-background to-indigo-500/10 -z-20"></div>
+        <div className="absolute inset-0 bg-gradient-to-bl from-primary/5 via-background to-accent/5 -z-20"></div>
         <FAQ />
       </div>
       
       <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-tr from-rose-500/10 via-background to-teal-500/10 -z-20"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-accent/5 via-background to-primary/5 -z-20"></div>
         <Contact />
       </div>
       

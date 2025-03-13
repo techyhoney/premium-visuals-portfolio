@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -62,19 +63,12 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
+				// New cosmic theme colors
 				'deep-purple': '#0b0521',
 				'dark-purple': '#1A1F2C',
-				'medium-purple': '#8B5CF6',
-				'vivid-purple': '#A855F7',
-				'light-purple': '#D6BCFA',
-				'electric-blue': '#2563EB',
-				'cyan-glow': '#06B6D4',
-				'magenta-pink': '#EC4899',
-				'vibrant-pink': '#F472B6',
-				'cosmic-teal': '#14B8A6',
-				'cosmic-amber': '#F59E0B',
-				'cosmic-rose': '#F43F5E',
-				'cosmic-emerald': '#10B981'
+				'medium-purple': '#6E59A5',
+				'vivid-purple': '#8B5CF6',
+				'light-purple': '#D6BCFA'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -145,30 +139,6 @@ export default {
 				'pulse-soft': {
 					'0%, 100%': { opacity: '0.7' },
 					'50%': { opacity: '1' }
-				},
-				'glow': {
-					'0%, 100%': { 
-						opacity: '0.8',
-						filter: 'brightness(1)'
-					},
-					'50%': { 
-						opacity: '1',
-						filter: 'brightness(1.2)' 
-					}
-				},
-				'color-cycle': {
-					'0%': { filter: 'hue-rotate(0deg)' },
-					'100%': { filter: 'hue-rotate(360deg)' }
-				},
-				'sparkle': {
-					'0%, 100%': { 
-						opacity: '0',
-						transform: 'scale(0.8)'
-					},
-					'50%': { 
-						opacity: '1',
-						transform: 'scale(1.2)'
-					}
 				}
 			},
 			animation: {
@@ -181,10 +151,7 @@ export default {
 				'modal-in': 'modal-in 0.3s ease-out',
 				'modal-out': 'modal-out 0.2s ease-in',
 				'shimmer': 'shimmer 2s infinite linear',
-				'pulse-soft': 'pulse-soft 2s ease-in-out infinite',
-				'glow': 'glow 4s ease-in-out infinite',
-				'color-cycle': 'color-cycle 10s linear infinite',
-				'sparkle': 'sparkle 3s ease-in-out infinite'
+				'pulse-soft': 'pulse-soft 2s ease-in-out infinite'
 			}
 		}
 	},
