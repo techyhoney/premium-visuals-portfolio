@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -125,17 +126,41 @@
     @apply flex items-center justify-between;
   }
 
+  /* Cosmic background gradient utilities */
+  .cosmic-bg {
+    @apply relative overflow-hidden bg-[#0D062D];
+  }
+
+  .cosmic-gradient {
+    background: radial-gradient(circle at center, 
+      #331c5d 0%, 
+      #221242 20%, 
+      #180d35 40%, 
+      #120828 60%, 
+      #0c051a 80%, 
+      #09021a 100%);
+  }
+
+  .cosmic-glow {
+    animation: cosmic-pulse 8s ease-in-out infinite alternate;
+  }
+
+  .cosmic-star {
+    animation-delay: calc(var(--animation-delay, 0) * 1s);
+    animation-duration: calc(var(--animation-duration, 0) * 1s);
+  }
+
   /* New gradient background utilities */
   .bg-gradient-soft {
-    @apply bg-gradient-to-br from-background via-accent/5 to-primary/5;
+    @apply bg-gradient-to-br from-[#0D062D] via-[#1A0E3D] to-[#28156E];
   }
 
   .bg-gradient-deep {
-    @apply bg-gradient-to-tr from-background via-background to-accent/10;
+    @apply bg-gradient-to-tr from-[#0D062D] via-[#1A0E3D] to-[#321D6F];
   }
 
   .bg-gradient-rich {
-    @apply bg-gradient-to-r from-background via-primary/10 to-accent/5;
+    @apply bg-gradient-to-r from-[#0D062D] via-[#1A0E3D] to-[#28156E];
   }
 
   /* Reflection utilities */
@@ -148,11 +173,11 @@
   }
 
   .reflection-dot {
-    @apply before:content-[''] before:absolute before:w-40 before:h-40 before:rounded-full before:bg-accent/20 before:blur-[80px] before:opacity-50;
+    @apply before:content-[''] before:absolute before:w-40 before:h-40 before:rounded-full before:bg-violet-600/20 before:blur-[80px] before:opacity-50;
   }
 
   .reflection-glow {
-    @apply after:content-[''] after:absolute after:w-60 after:h-60 after:rounded-full after:bg-primary/20 after:blur-[100px] after:opacity-30;
+    @apply after:content-[''] after:absolute after:w-60 after:h-60 after:rounded-full after:bg-indigo-600/20 after:blur-[100px] after:opacity-30;
   }
 
   /* 3D Cloud styles */
@@ -200,11 +225,6 @@
     background: inherit;
     border-radius: inherit;
   }
-  
-  @keyframes rainbow-border {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 200% 0%; }
-  }
 }
 
 @keyframes marquee {
@@ -212,7 +232,16 @@
   100% { transform: translateX(-100%); }
 }
 
+@keyframes cosmic-pulse {
+  0% { opacity: 0.3; transform: scale(0.95); }
+  50% { opacity: 0.5; transform: scale(1); }
+  100% { opacity: 0.3; transform: scale(0.95); }
+}
 
+@keyframes rainbow-border {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
 
 @layer base {
   * {
