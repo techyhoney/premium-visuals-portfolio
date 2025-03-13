@@ -48,9 +48,9 @@ const Navbar = () => {
             ease: "easeInOut" 
           }}
         >
-          <TicketPercent className="h-4 w-4 mr-2 text-accent" />
+          <TicketPercent className="h-4 w-4 mr-2 text-cosmic-amber" />
           <span>🔥 Summer Special! 20% off all services until August 31st</span>
-          <Sparkles className="h-4 w-4 ml-2 text-accent" />
+          <Sparkles className="h-4 w-4 ml-2 text-cosmic-amber" />
         </motion.div>
       </motion.div>
       
@@ -64,7 +64,7 @@ const Navbar = () => {
       >
         <div className="max-container flex-between">
           <div className="flex-center">
-            <a href="#" className="text-gradient font-bold text-xl">StellarDev</a>
+            <a href="#" className="text-gradient-vibrant font-bold text-xl">StellarDev</a>
           </div>
 
           {/* Desktop Navigation */}
@@ -73,12 +73,13 @@ const Navbar = () => {
               <a 
                 key={link.name}
                 href={link.href}
-                className="text-sm text-white/80 hover:text-white transition-colors"
+                className="text-sm text-white/80 hover:text-white transition-colors relative group"
               >
                 {link.name}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-vivid-purple to-cosmic-amber transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
-            <Button className="glass-button bg-white/10 hover:bg-white/15 border-violet-300/20">
+            <Button className="glass-button bg-white/10 hover:bg-white/15 border-violet-300/20 transition-all duration-300 hover:scale-105">
               Contact Us
             </Button>
           </nav>
@@ -106,7 +107,7 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              <Button className="glass-button mt-2 w-full bg-white/10 hover:bg-white/15 border-violet-300/20">
+              <Button className="glass-button mt-2 w-full bg-gradient-to-r from-vivid-purple/80 to-cosmic-amber/80 hover:from-vivid-purple hover:to-cosmic-amber text-white border-0">
                 Contact Us
               </Button>
             </div>

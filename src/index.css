@@ -5,6 +5,7 @@
 
 @layer base {
   :root {
+    /* Updated color variables with more vibrant tones */
     --background: 240 10% 4%;
     --foreground: 0 0% 98%;
 
@@ -14,16 +15,16 @@
     --popover: 240 10% 6%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 252 87% 67%;
+    --primary: 262 83% 65%; /* Made more vibrant */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 252 79% 69%;
+    --secondary: 262 83% 69%; /* Made more vibrant */
     --secondary-foreground: 240 10% 3.9%;
 
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
 
-    --accent: 262 83% 58%;
+    --accent: 262 83% 65%; /* Made more vibrant */
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62.8% 30.6%;
@@ -43,18 +44,18 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
-    --gradient-color: #8350e8;
-    --sparkles-color: #8350e8;
+    --gradient-color: #9061FF; /* Made more vibrant */
+    --sparkles-color: #9061FF; /* Made more vibrant */
     
-    /* New cosmic theme colors */
-    --deep-purple: 260 50% 10%;
-    --dark-purple: 260 40% 15%;
-    --medium-purple: 260 60% 30%; 
-    --vivid-purple: 260 70% 45%;
-    --light-purple: 260 80% 65%;
+    /* Enhanced cosmic theme colors */
+    --deep-purple: 260 75% 12%; /* Made more rich */
+    --dark-purple: 260 65% 18%; /* Made more rich */
+    --medium-purple: 260 83% 55%; /* Made more vibrant */
+    --vivid-purple: 260 86% 65%; /* Made more vibrant */
+    --light-purple: 260 86% 75%; /* Made more vibrant */
   }
   .dark {
-    --gradient-color: #8350e8;
+    --gradient-color: #9061FF; /* Made more vibrant */
     --sparkles-color: #ffffff;
   }
 }
@@ -75,20 +76,71 @@
 }
 
 @layer utilities {
+  /* Enhanced glass card with more vibrant effects */
   .glass-card {
-    @apply backdrop-blur-md bg-white/5 border border-white/10 shadow-[0_4px_15px_rgba(0,0,0,0.1)] hover:shadow-[0_4px_20px_rgba(255,255,255,0.05)] transition-all duration-300;
+    @apply backdrop-blur-md bg-white/10 border border-white/15 shadow-[0_4px_20px_rgba(255,255,255,0.07)] hover:shadow-[0_4px_25px_rgba(255,255,255,0.1)] transition-all duration-300;
+    position: relative;
+    overflow: hidden;
   }
   
+  /* Add subtle shimmer to glass cards */
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      to bottom right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(30deg);
+    animation: shimmer 5s linear infinite;
+    pointer-events: none;
+  }
+  
+  /* Enhanced glass button with more vibrant effects */
   .glass-button {
-    @apply backdrop-blur-md bg-white/10 hover:bg-white/15 transition-all duration-300 border border-white/20 shadow-[0_4px_15px_rgba(0,0,0,0.1)];
+    @apply backdrop-blur-md bg-white/15 hover:bg-white/20 transition-all duration-300 border border-white/25 shadow-[0_4px_20px_rgba(255,255,255,0.07)];
+    position: relative;
+    overflow: hidden;
   }
   
+  /* Add subtle shimmer to glass buttons */
+  .glass-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      to bottom right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(30deg);
+    animation: shimmer 3s linear infinite;
+    pointer-events: none;
+  }
+  
+  /* Enhanced text gradient with more vibrant colors */
   .text-gradient {
-    @apply bg-gradient-to-br from-white via-white/90 to-accent/80 bg-clip-text text-transparent;
+    @apply bg-gradient-to-br from-white via-white/90 to-vivid-purple bg-clip-text text-transparent;
   }
   
+  /* New vibrant text gradient for headings */
+  .text-gradient-vibrant {
+    @apply bg-gradient-to-r from-cyan-glow via-vibrant-pink to-cosmic-amber bg-clip-text text-transparent;
+  }
+  
+  /* ... keep existing code (premium-shadow, max-container, section-spacing, marquee-container) */
   .premium-shadow {
-    box-shadow: 0 10px 30px -10px rgba(79, 70, 229, 0.15);
+    box-shadow: 0 10px 30px -10px rgba(138, 92, 246, 0.25); /* Enhanced shadow color */
   }
 
   .max-container {
@@ -112,6 +164,7 @@
     animation-play-state: paused;
   }
 
+  /* ... keep existing code (tech-item, flex-center, flex-between) */
   .tech-item {
     @apply relative overflow-hidden backdrop-blur-md;
   }
@@ -133,26 +186,35 @@
     @apply flex items-center justify-between;
   }
 
-  /* New gradient background utilities for cosmic theme */
+  /* Enhanced gradient background utilities for cosmic theme */
   .bg-gradient-cosmic {
-    background: radial-gradient(ellipse at top, rgba(115, 61, 216, 0.2), rgba(35, 16, 85, 0));
+    background: radial-gradient(ellipse at top, rgba(138, 92, 246, 0.3), rgba(35, 16, 85, 0));
     background-color: #0b0521;
   }
 
-  /* Existing gradient background utilities */
+  /* Enhanced gradient background utilities */
   .bg-gradient-soft {
-    @apply bg-gradient-to-br from-background via-accent/5 to-primary/5;
+    @apply bg-gradient-to-br from-background via-vivid-purple/15 to-electric-blue/15;
   }
 
   .bg-gradient-deep {
-    @apply bg-gradient-to-tr from-background via-background to-accent/10;
+    @apply bg-gradient-to-tr from-background via-background to-magenta-pink/20;
   }
 
   .bg-gradient-rich {
-    @apply bg-gradient-to-r from-background via-primary/10 to-accent/5;
+    @apply bg-gradient-to-r from-background via-cosmic-teal/15 to-cosmic-amber/15;
   }
 
-  /* Stars container */
+  /* New vibrant gradient backgrounds */
+  .bg-gradient-vibrant {
+    @apply bg-gradient-to-tr from-magenta-pink/15 via-cosmic-emerald/10 to-cosmic-amber/15;
+  }
+
+  .bg-gradient-colorful {
+    @apply bg-gradient-to-br from-cosmic-rose/15 via-cosmic-teal/10 to-medium-purple/15;
+  }
+
+  /* Enhanced stars container */
   .stars-container {
     position: absolute;
     width: 100%;
@@ -166,31 +228,31 @@
     width: 100%;
     height: 100%;
     background-image: 
-      radial-gradient(1px, rgba(255, 255, 255, 0.5) 1px, transparent 1px),
-      radial-gradient(2px, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
-      radial-gradient(1px, rgba(255, 255, 255, 0.7) 1px, transparent 1px);
+      radial-gradient(1px, rgba(255, 255, 255, 0.7) 1px, transparent 1px),
+      radial-gradient(2px, rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+      radial-gradient(1px, rgba(255, 255, 255, 0.9) 1px, transparent 1px);
     background-size: 300px 300px, 200px 200px, 250px 250px;
     background-position: 0 0, 40px 60px, 130px 270px;
   }
 
-  /* Reflection utilities */
+  /* Enhanced reflection utilities */
   .reflection-top {
-    @apply before:content-[''] before:absolute before:top-0 before:left-1/4 before:right-1/4 before:h-[1px] before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent;
+    @apply before:content-[''] before:absolute before:top-0 before:left-1/4 before:right-1/4 before:h-[1px] before:bg-gradient-to-r before:from-transparent before:via-white/25 before:to-transparent;
   }
 
   .reflection-bottom {
-    @apply after:content-[''] after:absolute after:bottom-0 after:left-1/4 after:right-1/4 after:h-[1px] after:bg-gradient-to-r after:from-transparent after:via-white/20 after:to-transparent;
+    @apply after:content-[''] after:absolute after:bottom-0 after:left-1/4 after:right-1/4 after:h-[1px] after:bg-gradient-to-r after:from-transparent after:via-white/25 after:to-transparent;
   }
 
   .reflection-dot {
-    @apply before:content-[''] before:absolute before:w-40 before:h-40 before:rounded-full before:bg-accent/20 before:blur-[80px] before:opacity-50;
+    @apply before:content-[''] before:absolute before:w-40 before:h-40 before:rounded-full before:bg-accent/25 before:blur-[80px] before:opacity-60;
   }
 
   .reflection-glow {
-    @apply after:content-[''] after:absolute after:w-60 after:h-60 after:rounded-full after:bg-primary/20 after:blur-[100px] after:opacity-30;
+    @apply after:content-[''] after:absolute after:w-60 after:h-60 after:rounded-full after:bg-primary/25 after:blur-[100px] after:opacity-40;
   }
 
-  /* 3D Cloud styles */
+  /* ... keep existing code (3D Cloud styles, rainbow-border-glow) */
   .perspective-[1000px] {
     perspective: 1000px;
   }
@@ -199,7 +261,7 @@
     transform-style: preserve-3d;
   }
   
-  /* Rainbow border glow animation for the CTA button */
+  /* Enhanced rainbow border glow animation for the CTA button */
   .rainbow-border-glow {
     position: relative;
     z-index: 0;
@@ -222,7 +284,7 @@
     );
     background-size: 200% 200%;
     animation: rainbow-border 4s linear infinite;
-    opacity: 0.5;
+    opacity: 0.7; /* Made more vibrant */
     filter: blur(8px);
     border-radius: inherit;
   }
@@ -236,15 +298,71 @@
     border-radius: inherit;
   }
   
-  @keyframes rainbow-border {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 200% 0%; }
+  /* New glow effect for feature cards */
+  .feature-card-glow {
+    position: relative;
+  }
+  
+  .feature-card-glow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      45deg, 
+      rgba(90, 35, 220, 0.2) 0%, 
+      rgba(160, 90, 255, 0.2) 33%, 
+      rgba(100, 60, 240, 0.2) 66%, 
+      rgba(130, 80, 250, 0.2) 100%
+    );
+    filter: blur(15px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+  
+  .feature-card-glow:hover::after {
+    opacity: 1;
+  }
+  
+  /* New effect for section heading highlights */
+  .heading-highlight {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .heading-highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(
+      to right,
+      rgba(138, 92, 246, 0.7),
+      rgba(236, 72, 153, 0.7)
+    );
+    border-radius: 2px;
   }
 }
 
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-100%); }
+}
+
+@keyframes rainbow-border {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%) rotate(30deg); }
+  100% { transform: translateX(100%) rotate(30deg); }
 }
 
 @layer base {

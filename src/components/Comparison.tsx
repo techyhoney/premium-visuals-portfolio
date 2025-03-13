@@ -1,12 +1,13 @@
 
 import { Check, X, Code, Palette, ShoppingCart, BrainCircuit, Laptop, Gauge, ScreenShare, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 const comparisonData = {
   categories: [
     {
       name: "Expertise",
-      icon: <Code className="w-5 h-5 text-accent" />,
+      icon: <Code className="w-5 h-5 text-cosmic-amber" />,
       features: [
         {
           name: "Custom Development",
@@ -32,7 +33,7 @@ const comparisonData = {
     },
     {
       name: "Quality",
-      icon: <Gauge className="w-5 h-5 text-accent" />,
+      icon: <Gauge className="w-5 h-5 text-vivid-purple" />,
       features: [
         {
           name: "Premium Design",
@@ -96,21 +97,49 @@ const Comparison = () => {
     <section id="why-us" className="section-spacing relative overflow-hidden">
       <div className="max-container">
         <div className="text-center mb-16">
-          <span className="text-sm text-accent">Why Choose Us</span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-2">How We Compare</h2>
-          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+          <motion.span 
+            className="text-sm text-cosmic-amber"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            Why Choose Us
+          </motion.span>
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold mt-2 heading-highlight inline-block"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            How We Compare
+          </motion.h2>
+          <motion.p 
+            className="text-muted-foreground mt-4 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
             See how our premium services stack up against the competition.
-          </p>
+          </motion.p>
         </div>
         
-        <div className="overflow-x-auto pb-6">
+        <motion.div 
+          className="overflow-x-auto pb-6"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
           <table className="w-full min-w-[640px]">
             <thead>
               <tr>
                 <th className="text-left pb-6 pl-4"></th>
                 <th className="pb-6">
-                  <div className="glass-card rounded-lg py-3 px-4 text-center">
-                    <span className="text-gradient font-bold">✨ StellarDev</span>
+                  <div className="glass-card rounded-lg py-3 px-4 text-center border border-white/20 bg-gradient-to-r from-vivid-purple/20 to-cosmic-amber/20">
+                    <span className="text-gradient-vibrant font-bold">✨ StellarDev</span>
                   </div>
                 </th>
                 {comparisonData.competitors.map((competitor, index) => (
@@ -145,7 +174,7 @@ const Comparison = () => {
                         {feature.icon} {feature.name}
                       </td>
                       <td className="py-4 text-center">
-                        <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-accent/20 text-accent">
+                        <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gradient-to-br from-vivid-purple/30 to-cosmic-amber/30 text-white">
                           <Check size={16} />
                         </span>
                       </td>
@@ -168,7 +197,7 @@ const Comparison = () => {
               ))}
             </tbody>
           </table>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
