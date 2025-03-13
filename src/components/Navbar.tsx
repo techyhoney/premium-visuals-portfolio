@@ -30,14 +30,15 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Sticky Announcement Banner - Hidden on mobile */}
+      {/* Floating Announcement Banner - Hidden on mobile */}
       <motion.div 
-        className="fixed w-full py-2.5 bg-vivid-purple/15 border-b border-white/5 backdrop-blur-md z-50 hidden sm:block"
+        className="fixed w-full py-2.5 z-50 hidden sm:flex justify-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
+        style={{ top: '15px' }}
       >
         <motion.div 
-          className="flex justify-center items-center text-sm text-white px-4"
+          className="bg-vivid-purple/25 backdrop-blur-md border border-white/10 rounded-full px-6 py-1.5 flex justify-center items-center text-sm text-white shadow-lg"
           animate={{ 
             opacity: [0.8, 1, 0.8],
             scale: [1, 1.02, 1]
@@ -56,14 +57,19 @@ const Navbar = () => {
       
       <header 
         className={cn(
-          "fixed top-0 sm:top-8 w-full z-40 transition-all duration-300",
+          "fixed top-0 sm:top-16 w-full z-40 transition-all duration-300 px-4",
           isScrolled 
-            ? "py-4 backdrop-blur-xl bg-deep-purple/50 border-b border-white/5" 
-            : "py-6 bg-transparent"
+            ? "py-2" 
+            : "py-3"
         )}
       >
-        <div className="max-container flex-between">
-          <div className="flex-center">
+        <div className={cn(
+          "max-w-7xl mx-auto rounded-full backdrop-blur-xl transition-all duration-300 flex-between px-6",
+          isScrolled 
+            ? "bg-deep-purple/70 border border-white/10 shadow-lg" 
+            : "bg-deep-purple/40 border border-white/5"
+        )}>
+          <div className="flex-center py-3">
             <a href="#" className="text-gradient-vibrant font-bold text-xl">StellarDev</a>
           </div>
 
@@ -79,14 +85,14 @@ const Navbar = () => {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-vivid-purple to-cosmic-amber transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
-            <Button className="glass-button bg-white/10 hover:bg-white/15 border-violet-300/20 transition-all duration-300 hover:scale-105">
+            <Button className="glass-button bg-white/10 hover:bg-white/15 border-violet-300/20 transition-all duration-300 hover:scale-105 rounded-full">
               Contact Us
             </Button>
           </nav>
 
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden text-foreground" 
+            className="md:hidden text-foreground py-3" 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -95,8 +101,8 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <nav className="md:hidden absolute top-full left-0 w-full bg-deep-purple/90 backdrop-blur-xl border-b border-white/5 py-4">
-            <div className="flex flex-col space-y-4 px-4">
+          <nav className="md:hidden absolute top-full left-0 w-full mt-2 px-4">
+            <div className="flex flex-col space-y-4 bg-deep-purple/90 backdrop-blur-xl border border-white/5 p-4 rounded-xl">
               {navLinks.map((link) => (
                 <a 
                   key={link.name}
@@ -107,7 +113,7 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              <Button className="glass-button mt-2 w-full bg-gradient-to-r from-vivid-purple/80 to-cosmic-amber/80 hover:from-vivid-purple hover:to-cosmic-amber text-white border-0">
+              <Button className="glass-button mt-2 w-full bg-gradient-to-r from-vivid-purple/80 to-cosmic-amber/80 hover:from-vivid-purple hover:to-cosmic-amber text-white border-0 rounded-full">
                 Contact Us
               </Button>
             </div>
