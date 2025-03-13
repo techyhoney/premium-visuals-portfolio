@@ -45,22 +45,19 @@ const Hero = () => {
   
   return (
     <section className="min-h-screen pt-40 pb-16 relative overflow-hidden flex items-center">
-      {/* Premium gradient background with reflected gradient from top-center */}
-      <div className="absolute inset-0 bg-[#080A16] bg-opacity-95 -z-20" />
-      <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-background to-primary/5 -z-10" />
+      {/* Cosmic backdrop */}
+      <div className="absolute inset-0 bg-[#080A16] bg-opacity-10 -z-20" />
       
-      {/* Top gradient reflection */}
-      <div className="absolute top-0 left-0 right-0 h-60 bg-gradient-to-b from-accent/20 to-transparent blur-2xl -z-10" />
+      {/* Central illumination glow - adding purple tublight effect */}
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[600px] h-[500px] bg-vivid-purple/30 blur-[120px] rounded-full opacity-90 -z-10" />
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[300px] h-[250px] bg-white/20 blur-[80px] rounded-full opacity-60 -z-10" />
       
-      {/* Tublight effect at the top middle */}
-      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-80 bg-accent/30 blur-[80px] rounded-full opacity-80 -z-10" />
-      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-48 h-40 bg-white/20 blur-[40px] rounded-full opacity-60 -z-10" />
+      {/* Nebula-like effects with varying intensities */}
+      <div className="absolute top-20 right-[5%] w-96 h-96 rounded-full bg-accent/10 blur-[120px] animate-pulse-soft -z-10" />
+      <div className="absolute bottom-20 left-[5%] w-72 h-72 rounded-full bg-primary/10 blur-[100px] animate-pulse-soft delay-700 -z-10" />
+      <div className="absolute bottom-40 right-[15%] w-60 h-60 rounded-full bg-accent/15 blur-[90px] animate-pulse-soft delay-500 -z-10" />
       
-      {/* Decorative elements with premium reflections */}
-      <div className="absolute top-20 right-[5%] w-96 h-96 rounded-full bg-accent/10 blur-[120px] animate-pulse -z-10" />
-      <div className="absolute bottom-20 left-[5%] w-72 h-72 rounded-full bg-primary/10 blur-[100px] animate-pulse delay-700 -z-10" />
-      
-      {/* Glass reflections */}
+      {/* Reflective glass elements */}
       <div className="absolute top-1/4 left-[15%] w-32 h-32 rotate-45 bg-white/5 rounded-xl blur-xl -z-10" />
       <div className="absolute bottom-1/4 right-[15%] w-24 h-24 rotate-12 bg-white/5 rounded-xl blur-xl -z-10" />
       
@@ -75,7 +72,7 @@ const Hero = () => {
           {shortReviews.map((review, index) => (
             <div 
               key={index} 
-              className="glass-card py-2 px-4 rounded-full flex items-center gap-2"
+              className="glass-card py-2 px-4 rounded-full flex items-center gap-2 bg-white/5 backdrop-blur-md"
             >
               <span className="text-sm text-white">{review.text}</span>
               <div className="flex">
@@ -119,7 +116,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-8 text-lg text-muted-foreground max-w-2xl leading-relaxed"
+          className="mt-8 text-lg text-white/80 max-w-2xl leading-relaxed"
         >
           Custom web development, no-code solutions, Shopify expertise, and AI automation. 
           We bring your ideas to life with premium quality and exceptional attention to detail.
@@ -133,7 +130,7 @@ const Hero = () => {
           className="mt-12 flex flex-col sm:flex-row gap-6 items-center"
         >
           <div className="flex flex-col items-center">
-            <Button className="glass-button h-14 px-10 text-md relative overflow-hidden group rainbow-border-glow rounded-full">
+            <Button className="glass-button h-14 px-10 text-md relative overflow-hidden group rainbow-border-glow rounded-full bg-white/10 hover:bg-white/15 border-violet-300/20">
               <PhoneCall className="mr-2 h-4 w-4 relative z-10" />
               <span className="relative z-10">Book a Call</span>
               <div className="absolute inset-0 bg-white/10 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
@@ -142,13 +139,13 @@ const Hero = () => {
           </div>
           <Button 
             variant="link" 
-            className="text-muted-foreground hover:text-white transition-colors duration-300"
+            className="text-white/80 hover:text-white transition-colors duration-300"
           >
             Learn about our services
           </Button>
         </motion.div>
         
-        {/* Testimonial Avatars Section - Reduced top spacing */}
+        {/* Testimonial Avatars Section */}
         <motion.div 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -193,7 +190,7 @@ const Hero = () => {
             <div className="flex items-center gap-2">
               <p className="text-sm font-medium text-white">4.8/5</p>
               <span className="text-yellow-400 text-sm">★★★★★</span>
-              <p className="text-sm text-muted-foreground">rating</p>
+              <p className="text-sm text-white/70">rating</p>
             </div>
           </div>
         </motion.div>

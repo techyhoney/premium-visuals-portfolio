@@ -32,7 +32,7 @@ const Navbar = () => {
     <>
       {/* Sticky Announcement Banner - Hidden on mobile */}
       <motion.div 
-        className="fixed w-full py-2.5 bg-accent/15 border-b border-white/5 backdrop-blur-md z-50 hidden sm:block"
+        className="fixed w-full py-2.5 bg-vivid-purple/15 border-b border-white/5 backdrop-blur-md z-50 hidden sm:block"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
@@ -58,7 +58,7 @@ const Navbar = () => {
         className={cn(
           "fixed top-0 sm:top-8 w-full z-40 transition-all duration-300",
           isScrolled 
-            ? "py-4 backdrop-blur-lg bg-background/80 border-b border-white/5" 
+            ? "py-4 backdrop-blur-xl bg-deep-purple/50 border-b border-white/5" 
             : "py-6 bg-transparent"
         )}
       >
@@ -73,12 +73,12 @@ const Navbar = () => {
               <a 
                 key={link.name}
                 href={link.href}
-                className="text-sm text-muted-foreground hover:text-white transition-colors"
+                className="text-sm text-white/80 hover:text-white transition-colors"
               >
                 {link.name}
               </a>
             ))}
-            <Button className="glass-button">
+            <Button className="glass-button bg-white/10 hover:bg-white/15 border-violet-300/20">
               Contact Us
             </Button>
           </nav>
@@ -94,19 +94,19 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <nav className="md:hidden absolute top-full left-0 w-full bg-background/95 backdrop-blur-lg border-b border-white/5 py-4">
+          <nav className="md:hidden absolute top-full left-0 w-full bg-deep-purple/90 backdrop-blur-xl border-b border-white/5 py-4">
             <div className="flex flex-col space-y-4 px-4">
               {navLinks.map((link) => (
                 <a 
                   key={link.name}
                   href={link.href}
-                  className="text-sm py-2 text-muted-foreground hover:text-white transition-colors"
+                  className="text-sm py-2 text-white/80 hover:text-white transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
                 </a>
               ))}
-              <Button className="glass-button mt-2 w-full">
+              <Button className="glass-button mt-2 w-full bg-white/10 hover:bg-white/15 border-violet-300/20">
                 Contact Us
               </Button>
             </div>
