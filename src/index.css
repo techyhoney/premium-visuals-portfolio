@@ -43,18 +43,18 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
-    --gradient-color: #8350e8;
-    --sparkles-color: #8350e8;
+    --gradient-color: #8B5CF6;
+    --sparkles-color: #8B5CF6;
     
-    /* New cosmic theme colors */
+    /* Enhanced cosmic theme colors */
     --deep-purple: 260 50% 10%;
     --dark-purple: 260 40% 15%;
     --medium-purple: 260 60% 30%; 
-    --vivid-purple: 260 70% 45%;
-    --light-purple: 260 80% 65%;
+    --vivid-purple: 260 86% 65%;
+    --light-purple: 260 80% 75%;
   }
   .dark {
-    --gradient-color: #8350e8;
+    --gradient-color: #8B5CF6;
     --sparkles-color: #ffffff;
   }
 }
@@ -87,8 +87,13 @@
     @apply bg-gradient-to-br from-white via-white/90 to-accent/80 bg-clip-text text-transparent;
   }
   
+  /* New more vibrant gradient for StellarDev */
+  .text-gradient-vibrant {
+    @apply bg-gradient-to-r from-[#F97316] via-[#D946EF] to-[#8B5CF6] bg-clip-text text-transparent;
+  }
+  
   .premium-shadow {
-    box-shadow: 0 10px 30px -10px rgba(79, 70, 229, 0.15);
+    box-shadow: 0 10px 30px -10px rgba(139, 92, 246, 0.3);
   }
 
   .max-container {
@@ -96,7 +101,7 @@
   }
 
   .section-spacing {
-    @apply py-16 md:py-24;
+    @apply py-16 md:py-20;
   }
 
   .marquee-container {
@@ -135,7 +140,7 @@
 
   /* New gradient background utilities for cosmic theme */
   .bg-gradient-cosmic {
-    background: radial-gradient(ellipse at top, rgba(115, 61, 216, 0.2), rgba(35, 16, 85, 0));
+    background: radial-gradient(ellipse at top, rgba(139, 92, 246, 0.3), rgba(35, 16, 85, 0));
     background-color: #0b0521;
   }
 

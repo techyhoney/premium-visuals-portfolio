@@ -30,14 +30,14 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Sticky Announcement Banner - Hidden on mobile */}
+      {/* Floating Announcement Banner - Hidden on mobile */}
       <motion.div 
-        className="fixed w-full py-2.5 bg-vivid-purple/15 border-b border-white/5 backdrop-blur-md z-50 hidden sm:block"
+        className="fixed w-full py-2.5 z-50 hidden sm:block"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
         <motion.div 
-          className="flex justify-center items-center text-sm text-white px-4"
+          className="mx-auto max-w-[90%] rounded-full bg-vivid-purple/20 border border-white/10 backdrop-blur-md px-4 py-2 flex justify-center items-center text-sm text-white"
           animate={{ 
             opacity: [0.8, 1, 0.8],
             scale: [1, 1.02, 1]
@@ -56,15 +56,15 @@ const Navbar = () => {
       
       <header 
         className={cn(
-          "fixed top-0 sm:top-8 w-full z-40 transition-all duration-300",
+          "fixed top-8 sm:top-16 w-full z-40 transition-all duration-300 px-4",
           isScrolled 
-            ? "py-4 backdrop-blur-xl bg-deep-purple/50 border-b border-white/5" 
-            : "py-6 bg-transparent"
+            ? "py-2" 
+            : "py-3"
         )}
       >
-        <div className="max-container flex-between">
+        <div className="max-w-[95%] mx-auto rounded-full backdrop-blur-xl bg-deep-purple/70 border border-white/10 shadow-lg shadow-vivid-purple/20 flex items-center justify-between px-6 py-2">
           <div className="flex-center">
-            <a href="#" className="text-gradient font-bold text-xl">StellarDev</a>
+            <a href="#" className="text-gradient-vibrant font-bold text-xl">StellarDev</a>
           </div>
 
           {/* Desktop Navigation */}
@@ -73,12 +73,12 @@ const Navbar = () => {
               <a 
                 key={link.name}
                 href={link.href}
-                className="text-sm text-white/80 hover:text-white transition-colors"
+                className="text-sm text-white/90 hover:text-white transition-colors"
               >
                 {link.name}
               </a>
             ))}
-            <Button className="glass-button bg-white/10 hover:bg-white/15 border-violet-300/20">
+            <Button className="glass-button bg-vivid-purple/70 hover:bg-vivid-purple/90 border-violet-300/20 text-white">
               Contact Us
             </Button>
           </nav>
@@ -94,19 +94,19 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <nav className="md:hidden absolute top-full left-0 w-full bg-deep-purple/90 backdrop-blur-xl border-b border-white/5 py-4">
-            <div className="flex flex-col space-y-4 px-4">
+          <nav className="md:hidden absolute top-full mt-2 left-0 right-0 mx-auto w-[90%] bg-deep-purple/90 backdrop-blur-xl border border-white/10 rounded-2xl py-4 shadow-lg shadow-vivid-purple/20">
+            <div className="flex flex-col space-y-4 px-6">
               {navLinks.map((link) => (
                 <a 
                   key={link.name}
                   href={link.href}
-                  className="text-sm py-2 text-white/80 hover:text-white transition-colors"
+                  className="text-sm py-2 text-white/90 hover:text-white transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
                 </a>
               ))}
-              <Button className="glass-button mt-2 w-full bg-white/10 hover:bg-white/15 border-violet-300/20">
+              <Button className="glass-button mt-2 w-full bg-vivid-purple/70 hover:bg-vivid-purple/90 border-violet-300/20 text-white">
                 Contact Us
               </Button>
             </div>

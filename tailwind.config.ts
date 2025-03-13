@@ -63,12 +63,15 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// New cosmic theme colors
+				// Enhanced cosmic theme colors
 				'deep-purple': '#0b0521',
 				'dark-purple': '#1A1F2C',
 				'medium-purple': '#6E59A5',
 				'vivid-purple': '#8B5CF6',
-				'light-purple': '#D6BCFA'
+				'light-purple': '#D6BCFA',
+				'bright-orange': '#F97316',
+				'magenta-pink': '#D946EF',
+				'ocean-blue': '#0EA5E9'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

@@ -10,7 +10,6 @@ import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import { TechStackScroll } from "@/components/TechStackScroll";
 
 const Index = () => {
   return (
@@ -32,7 +31,7 @@ const Index = () => {
       <Navbar />
       <Hero />
       
-      {/* Rest of the content with regular gradient backgrounds */}
+      {/* Rest of the content with regular gradient backgrounds and consistent spacing */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-deep-purple/80 via-background to-background -z-20"></div>
         <Services />
@@ -43,22 +42,16 @@ const Index = () => {
         <Portfolio />
       </div>
       
-      <Process />
-      <Comparison />
+      <div className="relative overflow-hidden mt-0">
+        <div className="absolute inset-0 bg-gradient-to-tr from-accent/5 via-background to-primary/5 -z-20"></div>
+        <Process />
+      </div>
       
-      {/* Tech Stack Section - Moved below Comparison */}
-      <section className="py-20 w-full bg-gradient-to-br from-primary/10 via-background to-accent/5 relative overflow-hidden">
-        <div className="text-center mb-10 max-w-7xl mx-auto px-4">
-          <span className="text-sm text-accent">Our Technology Stack</span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-2">Powered by Modern Technologies</h2>
-          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-            We leverage cutting-edge tools and frameworks to build robust, scalable solutions.
-          </p>
-        </div>
-        <TechStackScroll />
-      </section>
+      <div className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-bl from-primary/5 via-background to-accent/5 -z-20"></div>
+        <Comparison />
+      </div>
       
-      {/* Apply subtle background gradients to all remaining sections */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-tr from-accent/5 via-background to-primary/5 -z-20"></div>
         <About />

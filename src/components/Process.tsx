@@ -48,7 +48,7 @@ const Process = () => {
       <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-accent/5 blur-[150px] opacity-50"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-primary/5 blur-[150px] opacity-50"></div>
       
-      <div className="max-container mt-20 relative z-10">
+      <div className="max-container relative z-10">
         {/* Process section content */}
         <motion.div 
           className="text-center mb-16"
@@ -70,18 +70,18 @@ const Process = () => {
               key={index} 
               className={cn(
                 "glass-card p-8 rounded-xl transition-all duration-300 hover:translate-y-[-5px]",
-                "border-t-2 border-t-accent/50"
+                "border-t-2 border-t-vivid-purple/70"
               )}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ 
-                boxShadow: "0 10px 25px -5px rgba(146, 118, 255, 0.1)",
-                borderTopColor: "rgba(146, 118, 255, 0.7)" 
+                boxShadow: "0 10px 25px -5px rgba(139, 92, 246, 0.2)",
+                borderTopColor: "rgba(139, 92, 246, 0.9)" 
               }}
             >
-              <span className="text-3xl text-accent font-bold">{step.number}</span>
+              <span className="text-3xl text-vivid-purple font-bold">{step.number}</span>
               <h3 className="text-xl font-semibold my-3">{step.title}</h3>
               <p className="text-muted-foreground">{step.description}</p>
               
