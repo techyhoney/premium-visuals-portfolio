@@ -1,0 +1,26 @@
+:root {
+  --black: #000;
+  --white: #fff;
+}
+
+.glow {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Make sure mask-composite is properly supported */
+@supports (mask-composite: intersect) or (-webkit-mask-composite: source-in) {
+  .glow::after {
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+}
+
+/* For browsers that don't support mask-composite */
+@supports not ((mask-composite: intersect) or (-webkit-mask-composite: source-in)) {
+  .glow::after {
+    opacity: 0.5;
+  }
+} 

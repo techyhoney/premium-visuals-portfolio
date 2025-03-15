@@ -3,6 +3,7 @@ import { ArrowRightIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 const BentoGrid = ({
   children,
@@ -14,7 +15,7 @@ const BentoGrid = ({
   return (
     <div
       className={cn(
-        "grid w-full grid-cols-1 md:grid-cols-3 gap-4",
+        "grid w-full auto-rows-[22rem] grid-cols-1 md:grid-cols-3 gap-6",
         className,
       )}
     >
@@ -34,7 +35,7 @@ const BentoCard = ({
   technologies,
 }: {
   name: string;
-  className?: string;
+  className: string;
   background?: ReactNode;
   Icon: any;
   description: string;
@@ -47,19 +48,35 @@ const BentoCard = ({
     className={cn(
       "group relative col-span-1 flex flex-col justify-between overflow-hidden rounded-xl h-full",
       // cosmic theme styles
-      "glass-card border border-white/10 backdrop-blur-xl group-hover:border-white/20 transition-all duration-300 card-edge-glow",
+      "glass-card border border-white/10 backdrop-blur-xl group-hover:border-white/20 transition-all duration-300",
       // dark styles
       "transform-gpu dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
       className,
     )}
   >
+    {/* Glowing effect */}
+    <GlowingEffect
+      spread={40}
+      glow={false}
+      disabled={false}
+      proximity={64}
+      inactiveZone={0.01}
+      borderWidth={2}
+      variant="default"
+    />
+    
     {/* Premium reflection effect */}
     <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
     <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
     <div className="absolute left-0 inset-y-0 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
     <div className="absolute right-0 inset-y-0 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
     
-    {background && <div className="absolute inset-0 z-0">{background}</div>}
+    {/* Background */}
+    {background ? (
+      <div className="absolute inset-0 z-0">{background}</div>
+    ) : (
+      <div className="absolute inset-0 bg-gradient-to-br from-deep-purple/40 to-vivid-purple/10 opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
+    )}
     
     <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-3 p-8 transition-all duration-300 group-hover:-translate-y-10">
       <div className="relative mb-4">
