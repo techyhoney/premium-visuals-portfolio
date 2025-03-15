@@ -1,4 +1,3 @@
-
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { PhoneCall } from "lucide-react";
@@ -44,7 +43,7 @@ const Hero = () => {
   const headingText = "We build digital products that empower businesses";
   
   return (
-    <section className="min-h-screen pt-40 pb-16 relative overflow-hidden flex items-center">
+    <section className="min-h-screen pt-20 md:pt-28 lg:pt-40 pb-16 relative overflow-hidden flex items-center">
       {/* Cosmic backdrop */}
       <div className="absolute inset-0 bg-[#080A16] bg-opacity-10 -z-20" />
       

@@ -54,7 +54,7 @@ const Navbar = () => {
       
       <header 
         className={cn(
-          "fixed top-8 sm:top-12 w-full z-40 transition-all duration-300 px-4",
+          "fixed top-4 sm:top-12 w-full z-40 transition-all duration-300 px-4",
           isScrolled 
             ? "py-2" 
             : "py-3"
