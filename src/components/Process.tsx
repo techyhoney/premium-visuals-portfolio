@@ -142,103 +142,84 @@ const Process = () => {
             })}
           </div>
           
-          {/* Steps indicators - desktop view */}
-          <div className="hidden md:flex flex-wrap justify-center gap-4 md:gap-8 lg:gap-16 mb-12">
-            {steps.map((step, index) => {
-              // Determine step state
-              const isCompleted = step.number < activeStep;
-              const isActive = step.number === activeStep;
-              const isFuture = step.number > activeStep;
-              
-              return (
-                <motion.div
-                  key={step.number}
-                  className="flex flex-col items-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <button 
-                    onClick={() => handleStepClick(step.number)}
-                    className="flex flex-col items-center focus:outline-none group transition-all hover:scale-105"
-                    aria-label={`Go to ${step.title} step`}
-                  >
-                    <div className="relative mb-4">
-                      <div className={cn(
-                        "flex items-center justify-center w-14 h-14 rounded-full text-white transition-all duration-300",
-                        isCompleted ? "bg-accent" : isActive ? "bg-vivid-purple" : "bg-deep-purple/50",
-                        isActive || isCompleted ? "shadow-[0_0_15px_rgba(139,92,246,0.3)]" : "opacity-70"
-                      )}>
-                        {isCompleted ? (
-                          <CheckIcon className="w-6 h-6" />
-                        ) : (
-                          <span className="text-xl font-semibold">{step.number}</span>
-                        )}
-                        <motion.div 
-                          className="absolute -inset-2 rounded-full bg-vivid-purple/20 blur-md -z-10"
-                          animate={{ 
-                            opacity: isActive ? [0.3, 0.7, 0.3] : 0,
-                            scale: isActive ? [0.9, 1.1, 0.9] : 1,
-                          }}
-                          transition={{ 
-                            duration: 3,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                          }}
-                        />
-                      </div>
-                      
-                      {/* Connector line */}
-                      {index < steps.length - 1 && (
-                        <div className="hidden md:block absolute top-1/2 left-full transform -translate-y-1/2 w-8 lg:w-16 h-0.5 bg-white/10">
-                          <div className={cn(
-                            "h-full transition-all duration-500",
-                            step.number < activeStep ? "bg-accent/70 w-full" : "w-0"
-                          )}></div>
+          {/* Desktop view - Matching the screenshot exactly */}
+          <div className="hidden md:block">
+            {/* Steps with numbers and titles */}
+            <div className="flex justify-center mb-12">
+              {steps.map((step, index) => {
+                // Determine step state
+                const isCompleted = step.number < activeStep;
+                const isActive = step.number === activeStep;
+                
+                return (
+                  <div key={step.number} className="flex items-center">
+                    <div className="flex flex-col items-center">
+                      {/* Step circle with number */}
+                      <button
+                        onClick={() => handleStepClick(step.number)}
+                        className="focus:outline-none transition-all hover:scale-105 mb-3"
+                        aria-label={`Go to ${step.title} step`}
+                      >
+                        <div className={cn(
+                          "flex items-center justify-center w-12 h-12 rounded-full text-white transition-all duration-300",
+                          isCompleted ? "bg-accent" : isActive ? "bg-vivid-purple" : "bg-deep-purple/50",
+                          isActive || isCompleted ? "shadow-[0_0_15px_rgba(139,92,246,0.3)]" : "opacity-70"
+                        )}>
+                          {isCompleted ? (
+                            <CheckIcon className="w-5 h-5" />
+                          ) : (
+                            <span className="text-lg font-semibold">{step.number}</span>
+                          )}
                         </div>
-                      )}
+                      </button>
+                      
+                      {/* Step title */}
+                      <h3 className={cn(
+                        "text-base font-semibold transition-all duration-300 whitespace-nowrap",
+                        isActive ? "text-white" : isCompleted ? "text-white" : "text-white/50"
+                      )}>
+                        {step.title}
+                      </h3>
                     </div>
                     
-                    <h3 className={cn(
-                      "text-lg font-semibold text-center transition-all duration-300",
-                      isActive || isCompleted ? "text-white" : "text-white/50"
+                    {/* Connector line */}
+                    {index < steps.length - 1 && (
+                      <div className="w-16 md:w-24 lg:w-32 h-0.5 bg-white/10 mx-2 md:mx-4 mt-6">
+                        <div className={cn(
+                          "h-full transition-all duration-500",
+                          step.number < activeStep ? "bg-accent/70 w-full" : "w-0"
+                        )}></div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+            
+            {/* Step descriptions - in a grid directly below each step */}
+            <div className="grid grid-cols-4 gap-8 px-4 mt-8">
+              {steps.map((step, index) => {
+                const isCompleted = step.number < activeStep;
+                const isActive = step.number === activeStep;
+                
+                return (
+                  <div
+                    key={step.number}
+                    className={cn(
+                      "text-center transition-all duration-300",
+                      isActive ? "opacity-100" : isCompleted ? "opacity-80" : "opacity-50"
+                    )}
+                  >
+                    <p className={cn(
+                      "text-sm leading-relaxed",
+                      isActive ? "text-white/90" : isCompleted ? "text-white/80" : "text-white/60"
                     )}>
-                      {step.title}
-                    </h3>
-                  </button>
-                </motion.div>
-              );
-            })}
-          </div>
-          
-          {/* Steps descriptions - desktop only */}
-          <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
-            {steps.map((step, index) => {
-              const isCompleted = step.number < activeStep;
-              const isActive = step.number === activeStep;
-              
-              return (
-                <motion.div
-                  key={step.number}
-                  className={cn(
-                    "text-center transition-all duration-300 max-w-xs mx-auto",
-                    isActive ? "opacity-100" : isCompleted ? "opacity-80" : "opacity-50"
-                  )}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: isActive ? 1 : isCompleted ? 0.8 : 0.5, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                >
-                  <p className={cn(
-                    "text-sm",
-                    isActive ? "text-white/90" : isCompleted ? "text-white/80" : "text-white/60"
-                  )}>
-                    {step.description}
-                  </p>
-                </motion.div>
-              );
-            })}
+                      {step.description}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
