@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -30,17 +29,16 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Floating Announcement Banner - Hidden on mobile */}
+      {/* Full-width Announcement Banner - Hidden on mobile */}
       <motion.div 
-        className="fixed w-full py-2.5 z-50 hidden sm:block"
+        className="fixed w-full z-50 hidden sm:block top-0"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
         <motion.div 
-          className="mx-auto max-w-[600px] rounded-full bg-vivid-purple/20 border border-white/10 backdrop-blur-md px-4 py-2 flex justify-center items-center text-sm text-white"
+          className="w-full bg-vivid-purple/30 px-4 py-3 flex justify-center items-center text-sm text-white"
           animate={{ 
-            opacity: [0.8, 1, 0.8],
-            scale: [1, 1.02, 1]
+            opacity: [0.9, 1, 0.9]
           }}
           transition={{ 
             duration: 3, 
@@ -56,7 +54,7 @@ const Navbar = () => {
       
       <header 
         className={cn(
-          "fixed top-8 sm:top-16 w-full z-40 transition-all duration-300 px-4",
+          "fixed top-8 sm:top-12 w-full z-40 transition-all duration-300 px-4",
           isScrolled 
             ? "py-2" 
             : "py-3"

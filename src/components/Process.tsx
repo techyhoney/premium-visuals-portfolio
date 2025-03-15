@@ -1,4 +1,3 @@
-
 import { cn } from "@/lib/utils";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
@@ -46,24 +45,37 @@ const Process = () => {
           transition={{ duration: 0.6 }}
         >
           <span className="text-sm text-accent">How We Work</span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-2 text-gradient-cosmic">Our Process</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mt-2 text-white">Our Progress</h2>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
             Building sites, end-to-end.
           </p>
         </motion.div>
         
         <div ref={containerRef} className="relative mx-auto max-w-3xl">
-          {/* Vertical timeline line */}
-          <div className="absolute left-0 md:left-8 top-0 bottom-0 w-[2px] bg-gradient-to-b from-accent/30 via-vivid-purple/50 to-primary/30"></div>
+          {/* Vertical timeline with cosmic gradient */}
+          <div className="absolute left-0 md:left-8 top-0 bottom-0 w-[1px] bg-gradient-to-b from-accent/10 via-vivid-purple/30 to-primary/10">
+            {/* Glowing light trail effect */}
+            <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-accent via-vivid-purple to-primary blur-[2px] opacity-40"></div>
+          </div>
           
-          {/* Moving sparkle element */}
+          {/* Four-point star marker that moves along the timeline */}
           <motion.div 
-            className="absolute left-[-8px] md:left-0 w-6 h-6 z-10 text-accent"
+            className="absolute left-[-12px] md:left-[-4px] z-10"
             style={{ 
               top: useTransform(scrollYProgress, [0, 1], ["0%", "95%"])
             }}
           >
-            <Sparkles className="w-full h-full animate-pulse-soft" />
+            {/* Four-point star with glow effect */}
+            <div className="relative">
+              <div className="absolute inset-0 bg-accent/30 blur-[8px] rounded-full w-8 h-8"></div>
+              <div className="relative w-8 h-8 flex items-center justify-center">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2L14.5 9.5H22L16 14L18.5 22L12 17.5L5.5 22L8 14L2 9.5H9.5L12 2Z" 
+                    fill="white" 
+                    className="animate-pulse-slow" />
+                </svg>
+              </div>
+            </div>
           </motion.div>
           
           {/* Timeline steps */}
@@ -125,8 +137,11 @@ const TimelineStep = ({ step, index, progress, total }: TimelineStepProps) => {
       className="flex items-start pl-8 md:pl-20 py-16 relative"
       style={{ opacity, y, scale }}
     >
-      {/* Timeline dot */}
-      <div className="absolute left-[-9px] md:left-[-1px] top-[78px] w-5 h-5 rounded-full border-2 border-vivid-purple bg-background"></div>
+      {/* Cosmic waypoint marker */}
+      <div className="absolute left-[-9px] md:left-[-1px] top-[78px] w-5 h-5 rounded-full">
+        <div className="absolute inset-0 bg-background border border-vivid-purple/50 rounded-full"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-primary/20 rounded-full blur-[1px]"></div>
+      </div>
       
       {/* Step number */}
       <div className="mr-6">
