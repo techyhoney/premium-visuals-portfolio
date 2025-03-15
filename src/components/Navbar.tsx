@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -30,14 +29,14 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Full Width Discount Banner */}
+      {/* Full Width Discount Banner with darker background */}
       <motion.div 
         className="fixed w-full py-2 z-50"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
         <motion.div 
-          className="w-full bg-vivid-purple/70 px-4 py-2 flex justify-center items-center text-sm text-white"
+          className="w-full bg-dark-purple/90 px-4 py-2 flex justify-center items-center text-sm text-white"
           animate={{ 
             opacity: [0.8, 1, 0.8]
           }}
