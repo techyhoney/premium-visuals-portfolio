@@ -5,13 +5,13 @@
 
 @layer base {
   :root {
-    --background: 222 47% 11%; /* #0F172A */
+    --background: 240 10% 4%;
     --foreground: 0 0% 98%;
 
-    --card: 222 47% 13%;
+    --card: 240 10% 6%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 222 47% 13%;
+    --popover: 240 10% 6%;
     --popover-foreground: 0 0% 98%;
 
     --primary: 252 87% 67%;
@@ -46,7 +46,7 @@
     --gradient-color: #8B5CF6;
     --sparkles-color: #8B5CF6;
     
-    /* Enhanced cosmic theme colors - keeping the purples */
+    /* Enhanced cosmic theme colors */
     --deep-purple: 260 50% 10%;
     --dark-purple: 260 40% 15%;
     --medium-purple: 260 60% 30%; 
