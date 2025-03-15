@@ -1,6 +1,8 @@
 
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { Sparkles } from "lucide-react";
 
 const steps = [
   {
@@ -10,37 +12,23 @@ const steps = [
   },
   {
     number: "02",
-    title: "Strategy",
-    description: "Based on the discovery, we create a comprehensive strategy outlining the technical approach and project roadmap."
-  },
-  {
-    number: "03",
     title: "Design",
     description: "Our designers create high-fidelity mockups and prototypes that align with your brand and user experience goals."
   },
   {
-    number: "04",
-    title: "Development",
-    description: "We build your solution using modern technologies and best practices for performance, security, and maintainability."
-  },
-  {
-    number: "05",
-    title: "Testing",
-    description: "Rigorous QA processes ensure your product works flawlessly across all devices and edge cases."
-  },
-  {
-    number: "06",
+    number: "03",
     title: "Launch",
     description: "We deploy your solution and provide training to ensure a smooth transition and successful adoption."
-  },
-  {
-    number: "07",
-    title: "Support",
-    description: "Our relationship continues with ongoing maintenance, updates, and strategic guidance for future growth."
-  },
+  }
 ];
 
 const Process = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
   return (
     <section id="process" className="section-spacing relative overflow-hidden">
       {/* Subtle background gradient with reflection */}
@@ -58,41 +46,99 @@ const Process = () => {
           transition={{ duration: 0.6 }}
         >
           <span className="text-sm text-accent">How We Work</span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-2">Our Process</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mt-2 text-gradient-cosmic">Our Process</h2>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-            We follow a structured approach to deliver exceptional results, ensuring transparency and efficiency at every stage.
+            Building sites, end-to-end.
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div ref={containerRef} className="relative mx-auto max-w-3xl">
+          {/* Vertical timeline line */}
+          <div className="absolute left-0 md:left-8 top-0 bottom-0 w-[2px] bg-gradient-to-b from-accent/30 via-vivid-purple/50 to-primary/30"></div>
+          
+          {/* Moving sparkle element */}
+          <motion.div 
+            className="absolute left-[-8px] md:left-0 w-6 h-6 z-10 text-accent"
+            style={{ 
+              top: useTransform(scrollYProgress, [0, 1], ["0%", "95%"])
+            }}
+          >
+            <Sparkles className="w-full h-full animate-pulse-soft" />
+          </motion.div>
+          
+          {/* Timeline steps */}
           {steps.map((step, index) => (
-            <motion.div 
-              key={index} 
-              className={cn(
-                "glass-card p-8 rounded-xl transition-all duration-300 hover:translate-y-[-5px] card-edge-glow",
-                "border-t-2 border-t-vivid-purple/70"
-              )}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ 
-                boxShadow: "0 10px 25px -5px rgba(139, 92, 246, 0.2)",
-                borderTopColor: "rgba(139, 92, 246, 0.9)" 
-              }}
-            >
-              <span className="text-3xl text-vivid-purple font-bold">{step.number}</span>
-              <h3 className="text-xl font-semibold my-3">{step.title}</h3>
-              <p className="text-muted-foreground">{step.description}</p>
-              
-              {/* Premium reflection effect */}
-              <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
-                  style={{ clipPath: "polygon(0 0, 100% 0, 100% 20%, 0 20%)" }}></div>
-            </motion.div>
+            <TimelineStep 
+              key={index}
+              step={step}
+              index={index}
+              progress={scrollYProgress}
+              total={steps.length}
+            />
           ))}
         </div>
       </div>
     </section>
+  );
+};
+
+interface TimelineStepProps {
+  step: {
+    number: string;
+    title: string;
+    description: string;
+  };
+  index: number;
+  progress: any;
+  total: number;
+}
+
+const TimelineStep = ({ step, index, progress, total }: TimelineStepProps) => {
+  const stepRef = useRef<HTMLDivElement>(null);
+  
+  // Calculate the progress threshold for this step
+  const startThreshold = index / total;
+  const endThreshold = (index + 1) / total;
+  
+  // Transform values for opacity and y position based on scroll progress
+  const opacity = useTransform(
+    progress, 
+    [startThreshold - 0.1, startThreshold, endThreshold - 0.1, endThreshold], 
+    [0.3, 1, 1, 0.3]
+  );
+  
+  const y = useTransform(
+    progress, 
+    [startThreshold - 0.1, startThreshold, endThreshold, endThreshold + 0.1], 
+    [20, 0, 0, -20]
+  );
+  
+  const scale = useTransform(
+    progress, 
+    [startThreshold - 0.1, startThreshold, endThreshold - 0.1, endThreshold], 
+    [0.95, 1, 1, 0.95]
+  );
+
+  return (
+    <motion.div 
+      ref={stepRef}
+      className="flex items-start pl-8 md:pl-20 py-16 relative"
+      style={{ opacity, y, scale }}
+    >
+      {/* Timeline dot */}
+      <div className="absolute left-[-9px] md:left-[-1px] top-[78px] w-5 h-5 rounded-full border-2 border-vivid-purple bg-background"></div>
+      
+      {/* Step number */}
+      <div className="mr-6">
+        <div className="text-3xl font-bold bg-gradient-to-r from-accent to-vivid-purple bg-clip-text text-transparent">{step.number}</div>
+      </div>
+      
+      {/* Step content */}
+      <div className="flex-1">
+        <h3 className="text-2xl font-semibold mb-2 text-white">{step.title}</h3>
+        <p className="text-muted-foreground max-w-lg">{step.description}</p>
+      </div>
+    </motion.div>
   );
 };
 
