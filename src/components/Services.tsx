@@ -1,102 +1,146 @@
-
 import { Code, ShoppingBag, Laptop, Cpu, Bot } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
 
 const services = [
   {
-    icon: <Code className="h-10 w-10 text-primary" />,
-    title: "Custom Web Development",
+    Icon: Code,
+    name: "Custom Web Development",
     description: "We build scalable, high-performance applications with modern tech stacks tailored to your specific needs.",
-    technologies: ["React", "Next.js", "Node.js", "TypeScript", "GraphQL"]
+    technologies: ["React", "Next.js", "Node.js", "TypeScript", "GraphQL"],
+    href: "#contact",
+    cta: "Get started",
+    className: "md:col-span-1 md:row-span-2"
   },
   {
-    icon: <Laptop className="h-10 w-10 text-primary" />,
-    title: "No-Code Solutions",
+    Icon: Laptop,
+    name: "No-Code Solutions",
     description: "Fast-track your digital presence with no-code platforms that offer flexibility without sacrificing quality.",
-    technologies: ["Webflow", "Bubble", "Airtable", "Zapier", "Memberstack"]
+    technologies: ["Webflow", "Bubble", "Airtable", "Zapier", "Memberstack"],
+    href: "#contact",
+    cta: "Learn more",
+    className: "md:col-span-1 md:row-span-1"
   },
   {
-    icon: <ShoppingBag className="h-10 w-10 text-primary" />,
-    title: "Shopify Development",
+    Icon: ShoppingBag,
+    name: "Shopify Development",
     description: "Custom e-commerce experiences that drive conversions with beautiful UX and optimized performance.",
-    technologies: ["Shopify", "Liquid", "Hydrogen", "Oxygen", "Headless"]
+    technologies: ["Shopify", "Liquid", "Hydrogen", "Oxygen", "Headless"],
+    href: "#contact",
+    cta: "Explore options",
+    className: "md:col-span-1 md:row-span-1"
   },
   {
-    icon: <Bot className="h-10 w-10 text-primary" />,
-    title: "Business Chatbots",
+    Icon: Bot,
+    name: "Business Chatbots",
     description: "Intelligent conversational AI systems that engage customers, answer queries, and streamline support operations.",
-    technologies: ["GPT-4", "DialogFlow", "Rasa", "Botpress", "NLP"]
+    technologies: ["GPT-4", "DialogFlow", "Rasa", "Botpress", "NLP"],
+    href: "#contact",
+    cta: "Get a demo",
+    className: "md:col-span-1 md:row-span-1"
   },
   {
-    icon: <Cpu className="h-10 w-10 text-primary" />,
-    title: "AI Automation",
+    Icon: Cpu,
+    name: "AI Automation",
     description: "Integrate cutting-edge AI solutions to automate workflows and create intelligent user experiences.",
-    technologies: ["GPT-4", "Computer Vision", "NLP", "Machine Learning", "Chatbots"]
+    technologies: ["GPT-4", "Computer Vision", "NLP", "Machine Learning", "Chatbots"],
+    href: "#contact",
+    cta: "Discover AI",
+    className: "md:col-span-1 md:row-span-1"
   },
 ];
-
-const ServicesCard = ({ service, index }: { service: typeof services[0], index: number }) => {
-  return (
-    <motion.div
-      className="relative group"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ y: -8 }}
-    >
-      <div className="absolute inset-0 bg-accent/5 rounded-xl blur-xl group-hover:bg-accent/10 transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
-      <div className="glass-card p-8 rounded-xl relative overflow-hidden border border-white/10 backdrop-blur-xl group-hover:border-white/20 transition-all duration-300 card-edge-glow">
-        {/* Premium reflection effect */}
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
-        <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-        <div className="absolute left-0 inset-y-0 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
-        <div className="absolute right-0 inset-y-0 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
-        
-        {/* Icon with enhanced glow */}
-        <motion.div 
-          className="mb-4 relative"
-          whileHover={{ scale: 1.05 }}
-          transition={{ type: "spring", stiffness: 400, damping: 10 }}
-        >
-          <div className="absolute inset-0 bg-accent/20 rounded-full blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
-          {service.icon}
-        </motion.div>
-        
-        <h3 className="text-xl font-semibold mb-3 group-hover:text-white transition-colors">{service.title}</h3>
-        <p className="text-muted-foreground mb-6 group-hover:text-white/80 transition-colors">{service.description}</p>
-        
-        <div className="flex flex-wrap gap-2">
-          {service.technologies.map((tech, techIndex) => (
-            <span 
-              key={techIndex} 
-              className="text-xs py-1 px-3 rounded-full bg-white/5 text-muted-foreground group-hover:bg-white/10 group-hover:text-white/90 transition-all duration-300"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
-    </motion.div>
-  );
-};
 
 const Services = () => {
   return (
     <section id="services" className="section-spacing relative">
       <div className="max-container">
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           <span className="text-sm text-accent">Our Expertise</span>
           <h2 className="text-3xl md:text-4xl font-bold mt-2">Services we offer</h2>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
             Our comprehensive suite of services is designed to address all your digital needs with a premium touch.
           </p>
-        </div>
+        </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <ServicesCard key={index} service={service} index={index} />
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <motion.div
+            className="md:col-span-1 h-[46rem] md:h-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <BentoCard
+              {...services[0]}
+              background={
+                <div className="absolute inset-0 bg-gradient-to-br from-deep-purple/40 to-vivid-purple/10 opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
+              }
+            />
+          </motion.div>
+          
+          <div className="md:col-span-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <motion.div
+                className="h-[22rem]"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <BentoCard
+                  {...services[1]}
+                  background={
+                    <div className="absolute inset-0 bg-gradient-to-br from-deep-purple/40 to-vivid-purple/10 opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
+                  }
+                />
+              </motion.div>
+              
+              <motion.div
+                className="h-[22rem]"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                <BentoCard
+                  {...services[2]}
+                  background={
+                    <div className="absolute inset-0 bg-gradient-to-br from-deep-purple/40 to-vivid-purple/10 opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
+                  }
+                />
+              </motion.div>
+              
+              <motion.div
+                className="h-[22rem]"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+              >
+                <BentoCard
+                  {...services[3]}
+                  background={
+                    <div className="absolute inset-0 bg-gradient-to-br from-deep-purple/40 to-vivid-purple/10 opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
+                  }
+                />
+              </motion.div>
+              
+              <motion.div
+                className="h-[22rem]"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+              >
+                <BentoCard
+                  {...services[4]}
+                  background={
+                    <div className="absolute inset-0 bg-gradient-to-br from-deep-purple/40 to-vivid-purple/10 opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
+                  }
+                />
+              </motion.div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

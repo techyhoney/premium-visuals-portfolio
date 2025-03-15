@@ -10,6 +10,7 @@ import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import GlobeSection from "@/components/GlobeSection";
 
 const Index = () => {
   return (
@@ -70,6 +71,11 @@ const Index = () => {
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-bl from-primary/5 via-background to-accent/5 -z-20"></div>
         <FAQ />
+      </div>
+      
+      <div className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-tr from-deep-purple/10 via-background to-vivid-purple/10 -z-20"></div>
+        <GlobeSection />
       </div>
       
       <div className="relative overflow-hidden">
