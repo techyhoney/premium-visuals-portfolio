@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -29,16 +30,17 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Full Width Discount Banner with darker background */}
+      {/* Floating Announcement Banner - Hidden on mobile */}
       <motion.div 
-        className="fixed w-full py-2 z-50"
+        className="fixed w-full py-2.5 z-50 hidden sm:block"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
         <motion.div 
-          className="w-full bg-dark-purple/90 px-4 py-2 flex justify-center items-center text-sm text-white"
+          className="mx-auto max-w-[600px] rounded-full bg-vivid-purple/20 border border-white/10 backdrop-blur-md px-4 py-2 flex justify-center items-center text-sm text-white"
           animate={{ 
-            opacity: [0.8, 1, 0.8]
+            opacity: [0.8, 1, 0.8],
+            scale: [1, 1.02, 1]
           }}
           transition={{ 
             duration: 3, 
@@ -46,15 +48,15 @@ const Navbar = () => {
             ease: "easeInOut" 
           }}
         >
-          <TicketPercent className="h-4 w-4 mr-2 text-white" />
+          <TicketPercent className="h-4 w-4 mr-2 text-accent" />
           <span>🔥 Summer Special! 20% off all services until August 31st</span>
-          <Sparkles className="h-4 w-4 ml-2 text-white" />
+          <Sparkles className="h-4 w-4 ml-2 text-accent" />
         </motion.div>
       </motion.div>
       
       <header 
         className={cn(
-          "fixed top-8 w-full z-40 transition-all duration-300 px-4",
+          "fixed top-8 sm:top-16 w-full z-40 transition-all duration-300 px-4",
           isScrolled 
             ? "py-2" 
             : "py-3"
