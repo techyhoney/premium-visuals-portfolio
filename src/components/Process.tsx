@@ -69,7 +69,7 @@ const Process = () => {
             <motion.div 
               key={index} 
               className={cn(
-                "glass-card p-8 rounded-xl transition-all duration-300 hover:translate-y-[-5px]",
+                "glass-card p-8 rounded-xl transition-all duration-300 hover:translate-y-[-5px] card-edge-glow",
                 "border-t-2 border-t-vivid-purple/70"
               )}
               initial={{ opacity: 0, y: 20 }}

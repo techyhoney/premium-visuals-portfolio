@@ -96,12 +96,12 @@ const Hero = () => {
           </span>
         </motion.div>
         
-        {/* Main Heading with Text Animation */}
+        {/* Main Heading with Text Animation and Glowing Effect */}
         <motion.h1 
           initial="hidden"
           animate="visible"
           variants={textVariants}
-          className="mt-8 text-4xl md:text-6xl lg:text-7xl font-bold leading-tight md:leading-tight lg:leading-tight max-w-4xl"
+          className="mt-8 text-4xl md:text-6xl lg:text-7xl font-bold leading-tight md:leading-tight lg:leading-tight max-w-4xl hero-text-glow"
         >
           We build{" "}
           <span className="text-gradient relative inline-block">

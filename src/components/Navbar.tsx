@@ -37,7 +37,7 @@ const Navbar = () => {
         animate={{ opacity: 1 }}
       >
         <motion.div 
-          className="mx-auto max-w-[90%] rounded-full bg-vivid-purple/20 border border-white/10 backdrop-blur-md px-4 py-2 flex justify-center items-center text-sm text-white"
+          className="mx-auto max-w-[600px] rounded-full bg-vivid-purple/20 border border-white/10 backdrop-blur-md px-4 py-2 flex justify-center items-center text-sm text-white"
           animate={{ 
             opacity: [0.8, 1, 0.8],
             scale: [1, 1.02, 1]
@@ -62,9 +62,9 @@ const Navbar = () => {
             : "py-3"
         )}
       >
-        <div className="max-w-[95%] mx-auto rounded-full backdrop-blur-xl bg-deep-purple/70 border border-white/10 shadow-lg shadow-vivid-purple/20 flex items-center justify-between px-6 py-2">
+        <div className="max-w-[80%] mx-auto rounded-full backdrop-blur-xl bg-deep-purple/70 border border-white/10 shadow-lg shadow-vivid-purple/20 flex items-center justify-between px-6 py-2">
           <div className="flex-center">
-            <a href="#" className="text-gradient-vibrant font-bold text-xl">StellarDev</a>
+            <a href="#" className="text-gradient-cosmic font-bold text-xl">StellarDev</a>
           </div>
 
           {/* Desktop Navigation */}
@@ -94,7 +94,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <nav className="md:hidden absolute top-full mt-2 left-0 right-0 mx-auto w-[90%] bg-deep-purple/90 backdrop-blur-xl border border-white/10 rounded-2xl py-4 shadow-lg shadow-vivid-purple/20">
+          <nav className="md:hidden absolute top-full mt-2 left-0 right-0 mx-auto w-[80%] bg-deep-purple/90 backdrop-blur-xl border border-white/10 rounded-2xl py-4 shadow-lg shadow-vivid-purple/20">
             <div className="flex flex-col space-y-4 px-6">
               {navLinks.map((link) => (
                 <a 

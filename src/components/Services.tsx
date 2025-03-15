@@ -46,7 +46,7 @@ const ServicesCard = ({ service, index }: { service: typeof services[0], index: 
       whileHover={{ y: -8 }}
     >
       <div className="absolute inset-0 bg-accent/5 rounded-xl blur-xl group-hover:bg-accent/10 transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
-      <div className="glass-card p-8 rounded-xl relative overflow-hidden border border-white/10 backdrop-blur-xl group-hover:border-white/20 transition-all duration-300">
+      <div className="glass-card p-8 rounded-xl relative overflow-hidden border border-white/10 backdrop-blur-xl group-hover:border-white/20 transition-all duration-300 card-edge-glow">
         {/* Premium reflection effect */}
         <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
         <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
