@@ -168,7 +168,7 @@ const Portfolio = () => {
 
       {/* Case Study Modal */}
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="max-w-5xl p-0 bg-card border border-white/10 overflow-hidden max-h-[90vh]">
+        <DialogContent className="max-w-5xl p-0 bg-[#0F172A] border border-white/10 overflow-hidden max-h-[90vh]">
           <AnimatePresence>
             {selectedProject && (
               <motion.div
