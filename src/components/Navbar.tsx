@@ -36,9 +36,9 @@ const Navbar = () => {
         animate={{ opacity: 1 }}
       >
         <motion.div 
-          className="w-full bg-vivid-purple/30 px-4 py-3 flex justify-center items-center text-sm text-white"
+          className="w-full bg-vivid-purple/50 px-4 py-3 flex justify-center items-center text-sm text-white"
           animate={{ 
-            opacity: [0.9, 1, 0.9]
+            opacity: [0.98, 1, 0.98]
           }}
           transition={{ 
             duration: 3, 
@@ -54,7 +54,7 @@ const Navbar = () => {
       
       <header 
         className={cn(
-          "fixed top-4 sm:top-12 w-full z-40 transition-all duration-300 px-4",
+          "fixed top-8 sm:top-12 w-full z-40 transition-all duration-300 px-4",
           isScrolled 
             ? "py-2" 
             : "py-3"

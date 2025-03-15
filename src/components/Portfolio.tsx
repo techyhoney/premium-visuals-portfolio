@@ -1,14 +1,77 @@
+
 import { useRef, useEffect, useState } from 'react';
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, X } from "lucide-react";
 import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
 import { motion, AnimatePresence } from "framer-motion";
-import { projects, Project } from "@/data/portfolioData";
+
+const projects = [
+  {
+    id: 1,
+    title: "Fintech Dashboard",
+    category: "Web Application",
+    image: "bg-gradient-to-br from-violet-500/20 to-purple-700/20",
+    description: "A comprehensive financial management platform with real-time analytics.",
+    gifUrl: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHJhd3Z5aWdjbjBrZThpaGw3NXR1dzJuejVqaW1pOGNzbXI0a2g5MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oKIPEqDGUULpEU0aQ/giphy.gif",
+    techStack: ["React", "TypeScript", "Tailwind CSS", "Node.js", "MongoDB"],
+    challenges: "Creating intuitive data visualization components while ensuring real-time updates without performance degradation.",
+    solutions: "Implemented optimized React components with memoization and leveraged WebSockets for efficient real-time data transfer.",
+    outcome: "50% increase in user engagement and 30% reduction in analysis time for financial advisors using the platform."
+  },
+  {
+    id: 2,
+    title: "E-commerce Platform",
+    category: "Shopify",
+    image: "bg-gradient-to-br from-blue-500/20 to-cyan-600/20",
+    description: "Custom Shopify solution with advanced product filtering and checkout.",
+    gifUrl: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTRrN3V6b2dzbzdqZ3NucGdkaGprOG1qemFmbmJnaGJoY2hrbmxqZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Vn9QTgaRhQTF8QWIir/giphy.gif",
+    techStack: ["Shopify Liquid", "JavaScript", "CSS", "Shopify APIs", "GraphQL"],
+    challenges: "Building a custom filtering system that maintained performance with large inventory catalogs.",
+    solutions: "Created a client-side filtering algorithm with intelligent caching and pagination to handle thousands of products efficiently.",
+    outcome: "Conversion rate improved by 25% and average order value increased by 15% after implementation."
+  },
+  {
+    id: 3,
+    title: "AI Content Creator",
+    category: "SaaS Platform",
+    image: "bg-gradient-to-br from-emerald-500/20 to-green-600/20",
+    description: "AI-powered platform for generating marketing content at scale.",
+    gifUrl: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExanZwNnJkY3djbDJuYWYxYWV4MWl3NmE2dzhhdzYxczFnYnNuN2xzNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26tn33aiTi1jkl6H6/giphy.gif",
+    techStack: ["Next.js", "Python", "OpenAI API", "AWS Lambda", "PostgreSQL"],
+    challenges: "Balancing generation quality with response time while managing API costs at scale.",
+    solutions: "Developed a hybrid caching system with pre-generation of common content types and intelligent request batching.",
+    outcome: "Content creation time reduced by 85% for marketing teams while maintaining high quality and brand consistency."
+  },
+  {
+    id: 4,
+    title: "Healthcare Portal",
+    category: "Web Application",
+    image: "bg-gradient-to-br from-red-500/20 to-rose-600/20",
+    description: "Patient management system with scheduling and telehealth features.",
+    gifUrl: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjN1emlibXU5Z2I4bjdvaHlnODNncmd5ajlycW41ejN4aWc2ODR3dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JmJMzYQvOGRTJnFnDw/giphy.gif",
+    techStack: ["React", "Node.js", "Express", "MongoDB", "WebRTC", "HIPAA Compliance Tools"],
+    challenges: "Ensuring HIPAA compliance while creating a seamless telehealth experience with reliable video streaming.",
+    solutions: "Implemented end-to-end encryption and secure data storage alongside optimized WebRTC connections for various network conditions.",
+    outcome: "Enabled the clinic to serve 200% more patients during the pandemic with a 98% satisfaction rate for telehealth visits."
+  },
+  {
+    id: 5,
+    title: "Real Estate Marketplace",
+    category: "No-Code Solution",
+    image: "bg-gradient-to-br from-amber-500/20 to-yellow-600/20",
+    description: "Property listing platform built with no-code tools and custom integrations.",
+    gifUrl: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHJ3dTYyNGl1bXQ2dTM0NjU1NmZ4MzBzNWVrcmR2ZWxvY2dodGRqYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0HlTU9KcSYkXmtyg/giphy.gif",
+    techStack: ["Webflow", "Zapier", "Airtable", "Make.com", "Custom JavaScript"],
+    challenges: "Creating advanced search functionality and integrating with MLS listings within no-code constraints.",
+    solutions: "Developed custom JavaScript modules to enhance the no-code platform capabilities and built automated workflows for data synchronization.",
+    outcome: "Reduced development costs by 70% while launching in 4 weeks instead of the original 3-month timeline."
+  }
+];
 
 const Portfolio = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   useEffect(() => {
@@ -53,7 +116,7 @@ const Portfolio = () => {
     };
   }, []);
 
-  const openModal = (project: Project) => {
+  const openModal = (project: typeof projects[0]) => {
     setSelectedProject(project);
     setIsModalOpen(true);
   };
@@ -188,46 +251,11 @@ const Portfolio = () => {
 };
 
 type ProjectCardProps = {
-  project: Project;
+  project: typeof projects[0];
   onViewCaseStudy: () => void;
 };
 
 const ProjectCard = ({ project, onViewCaseStudy }: ProjectCardProps) => {
-  const [isHovering, setIsHovering] = useState(false);
-  const [imageUrl, setImageUrl] = useState(project.staticImageUrl);
-  const [isGifLoaded, setIsGifLoaded] = useState(false);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  
-  // Preload the GIF when component mounts
-  useEffect(() => {
-    const preloadImage = new Image();
-    preloadImage.src = project.gifUrl;
-    preloadImage.onload = () => {
-      setIsGifLoaded(true);
-    };
-  }, [project.gifUrl]);
-  
-  // Handle hover state to control GIF playback with smooth transition
-  useEffect(() => {
-    if (isHovering && isGifLoaded) {
-      setIsTransitioning(true);
-      // Short delay before changing the image to allow for fade transition
-      const timer = setTimeout(() => {
-        setImageUrl(project.gifUrl);
-        setIsTransitioning(false);
-      }, 150);
-      return () => clearTimeout(timer);
-    } else if (!isHovering) {
-      setIsTransitioning(true);
-      // Short delay before changing back to static image
-      const timer = setTimeout(() => {
-        setImageUrl(project.staticImageUrl);
-        setIsTransitioning(false);
-      }, 150);
-      return () => clearTimeout(timer);
-    }
-  }, [isHovering, isGifLoaded, project.gifUrl, project.staticImageUrl]);
-
   return (
     <div className="flex-none w-[320px] md:w-[420px]">
       <div 
@@ -235,44 +263,16 @@ const ProjectCard = ({ project, onViewCaseStudy }: ProjectCardProps) => {
           "glass-card rounded-xl overflow-hidden h-[420px] md:h-[480px] flex flex-col",
           "transition-all duration-300 hover:translate-y-[-5px] hover:shadow-[0_10px_25px_rgba(255,255,255,0.1)]"
         )}
-        onMouseEnter={() => setIsHovering(true)}
-        onMouseLeave={() => setIsHovering(false)}
       >
         <div 
           className={cn(
             "h-[220px] md:h-[260px] w-full relative overflow-hidden",
-            !imageUrl && project.image
+            project.image
           )}
         >
-          {imageUrl && (
-            <img 
-              src={imageUrl} 
-              alt={project.title}
-              className={cn(
-                "w-full h-full object-cover",
-                isTransitioning ? "opacity-50 transition-opacity duration-300" : "opacity-100 transition-opacity duration-300"
-              )}
-              loading="lazy"
-            />
-          )}
-          
           {/* Add reflection effect */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent opacity-20"></div>
           <div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-black/40 to-transparent"></div>
-          
-          {/* Play indicator that appears when hovering and GIF is loaded */}
-          {isHovering && isGifLoaded && (
-            <div className="absolute top-2 right-2 bg-black/50 text-white text-xs px-2 py-1 rounded-full opacity-80 animate-fade-in">
-              GIF Playing
-            </div>
-          )}
-          
-          {/* Loading indicator if GIF isn't loaded yet */}
-          {isHovering && !isGifLoaded && (
-            <div className="absolute top-2 right-2 bg-black/50 text-white text-xs px-2 py-1 rounded-full opacity-80 animate-pulse">
-              Loading GIF...
-            </div>
-          )}
         </div>
         <div className="flex flex-col flex-1 p-6">
           <span className="text-xs text-accent mb-2">{project.category}</span>

@@ -1,4 +1,3 @@
-
 import { cn } from "@/lib/utils";
 import { ArrowUp } from "lucide-react";
 
@@ -13,7 +12,7 @@ const Footer = () => {
   return (
     <footer className="bg-black/20 border-t border-white/5 py-16 relative overflow-hidden">
       {/* Company name watermark - positioned lower to avoid text overlap */}
-      <div className="absolute inset-0 flex items-center justify-center translate-y-16 opacity-[0.03] pointer-events-none">
+      <div className="absolute inset-0 flex items-center justify-center translate-y-[35%] opacity-[0.03] pointer-events-none">
         <span className="text-[20vw] font-bold tracking-tight text-white whitespace-nowrap">
           StellarDev
         </span>
