@@ -39,7 +39,7 @@ const steps = [
 
 const Process = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [activeStep, setActiveStep] = useState(4); // Default to the last step (Launch)
+  const [activeStep, setActiveStep] = useState(1); // Default to the first step (Discovery)
 
   // Handle step click
   const handleStepClick = (stepNumber: number) => {
@@ -56,7 +56,7 @@ const Process = () => {
       <div className="max-container relative z-10" ref={containerRef}>
         {/* Process section content */}
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-8 md:mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -71,8 +71,79 @@ const Process = () => {
         
         {/* Process steps */}
         <div className="relative mx-auto max-w-5xl">
-          {/* Steps indicators */}
-          <div className="flex flex-wrap justify-center gap-4 md:gap-8 lg:gap-16 mb-12">
+          {/* Steps indicators - mobile view */}
+          <div className="flex md:hidden flex-col items-center space-y-8 mb-8">
+            {steps.map((step, index) => {
+              // Determine step state
+              const isCompleted = step.number < activeStep;
+              const isActive = step.number === activeStep;
+              const isFuture = step.number > activeStep;
+              
+              return (
+                <div key={step.number} className="w-full">
+                  <button 
+                    onClick={() => handleStepClick(step.number)}
+                    className="flex items-center w-full focus:outline-none group transition-all"
+                    aria-label={`Go to ${step.title} step`}
+                  >
+                    <div className="relative mr-4">
+                      <div className={cn(
+                        "flex items-center justify-center w-12 h-12 rounded-full text-white transition-all duration-300",
+                        isCompleted ? "bg-accent" : isActive ? "bg-vivid-purple" : "bg-deep-purple/50",
+                        isActive || isCompleted ? "shadow-[0_0_15px_rgba(139,92,246,0.3)]" : "opacity-70"
+                      )}>
+                        {isCompleted ? (
+                          <CheckIcon className="w-5 h-5" />
+                        ) : (
+                          <span className="text-lg font-semibold">{step.number}</span>
+                        )}
+                        <motion.div 
+                          className="absolute -inset-2 rounded-full bg-vivid-purple/20 blur-md -z-10"
+                          animate={{ 
+                            opacity: isActive ? [0.3, 0.7, 0.3] : 0,
+                            scale: isActive ? [0.9, 1.1, 0.9] : 1,
+                          }}
+                          transition={{ 
+                            duration: 3,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }}
+                        />
+                      </div>
+                      
+                      {/* Vertical connector line */}
+                      {index < steps.length - 1 && (
+                        <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0.5 h-8 bg-white/10">
+                          <div className={cn(
+                            "w-full transition-all duration-500",
+                            step.number < activeStep ? "bg-accent/70 h-full" : "h-0"
+                          )}></div>
+                        </div>
+                      )}
+                    </div>
+                    
+                    <div className="flex-1 text-left">
+                      <h3 className={cn(
+                        "text-lg font-semibold transition-all duration-300",
+                        isActive || isCompleted ? "text-white" : "text-white/50"
+                      )}>
+                        {step.title}
+                      </h3>
+                      <p className={cn(
+                        "text-sm mt-1",
+                        isActive ? "text-white/90" : isCompleted ? "text-white/80" : "text-white/60"
+                      )}>
+                        {step.description}
+                      </p>
+                    </div>
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+          
+          {/* Steps indicators - desktop view */}
+          <div className="hidden md:flex flex-wrap justify-center gap-4 md:gap-8 lg:gap-16 mb-12">
             {steps.map((step, index) => {
               // Determine step state
               const isCompleted = step.number < activeStep;
@@ -141,24 +212,11 @@ const Process = () => {
             })}
           </div>
           
-          {/* Steps descriptions - aligned with steps */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
+          {/* Steps descriptions - desktop only */}
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
             {steps.map((step, index) => {
               const isCompleted = step.number < activeStep;
               const isActive = step.number === activeStep;
-              
-              let description = "";
-              
-              // Use the exact text from the image
-              if (step.number === 1) {
-                description = "We start by understanding your business goals, target audience, and project requirements through in-depth consultation.";
-              } else if (step.number === 2) {
-                description = "Our designers create high-fidelity mockups and prototypes that align with your brand and user experience goals.";
-              } else if (step.number === 3) {
-                description = "Our engineers build your solution using modern technologies and best practices for performance, security, and scalability.";
-              } else if (step.number === 4) {
-                description = "We deploy your solution and provide training to ensure a smooth transition and successful adoption.";
-              }
               
               return (
                 <motion.div
@@ -176,7 +234,7 @@ const Process = () => {
                     "text-sm",
                     isActive ? "text-white/90" : isCompleted ? "text-white/80" : "text-white/60"
                   )}>
-                    {description}
+                    {step.description}
                   </p>
                 </motion.div>
               );

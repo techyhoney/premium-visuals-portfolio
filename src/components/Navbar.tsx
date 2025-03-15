@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Menu, X, Sparkles, TicketPercent } from "lucide-react";
@@ -7,16 +7,32 @@ import { motion } from "framer-motion";
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isNearFooter, setIsNearFooter] = useState(false);
+  const navbarRef = useRef<HTMLElement>(null);
 
   // Update navbar on scroll
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+      
+      // Check if we're near the footer
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollPosition = window.scrollY + windowHeight;
+      const footerHeight = 400; // Approximate footer height
+      
+      // If we're within the footer height from the bottom, hide the navbar
+      setIsNearFooter(documentHeight - scrollPosition < footerHeight);
     };
     
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Close mobile menu when clicking a link
+  const handleLinkClick = () => {
+    setIsMobileMenuOpen(false);
+  };
 
   const navLinks = [
     { name: 'Services', href: '#services' },
@@ -53,11 +69,15 @@ const Navbar = () => {
       </motion.div>
       
       <header 
+        ref={navbarRef}
         className={cn(
           "fixed top-8 sm:top-12 w-full z-40 transition-all duration-300 px-4",
           isScrolled 
             ? "py-2" 
-            : "py-3"
+            : "py-3",
+          isNearFooter && !isMobileMenuOpen
+            ? "opacity-0 pointer-events-none translate-y-4" 
+            : "opacity-100 pointer-events-auto translate-y-0"
         )}
       >
         <div className="max-w-[80%] mx-auto rounded-full backdrop-blur-xl bg-deep-purple/70 border border-white/10 shadow-lg shadow-vivid-purple/20 flex items-center justify-between px-6 py-2">
@@ -99,12 +119,15 @@ const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   className="text-sm py-2 text-white/90 hover:text-white transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={handleLinkClick}
                 >
                   {link.name}
                 </a>
               ))}
-              <Button className="glass-button mt-2 w-full bg-vivid-purple/70 hover:bg-vivid-purple/90 border-violet-300/20 text-white">
+              <Button 
+                className="glass-button mt-2 w-full bg-vivid-purple/70 hover:bg-vivid-purple/90 border-violet-300/20 text-white"
+                onClick={handleLinkClick}
+              >
                 Contact Us
               </Button>
             </div>
