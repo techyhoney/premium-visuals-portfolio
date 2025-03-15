@@ -1,4 +1,3 @@
-
 import { useRef, useEffect, useState } from 'react';
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -145,7 +144,6 @@ const Portfolio = () => {
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           <div className="flex gap-6 px-4 md:px-0 md:ml-[calc((100vw-1280px)/2)]">
-            {/* First set of projects */}
             {projects.map((project) => (
               <ProjectCard 
                 key={project.id} 
@@ -154,7 +152,6 @@ const Portfolio = () => {
               />
             ))}
             
-            {/* Duplicate projects for infinite scroll */}
             {projects.map((project) => (
               <ProjectCard 
                 key={`dup-${project.id}`} 
@@ -166,9 +163,8 @@ const Portfolio = () => {
         </div>
       </div>
 
-      {/* Case Study Modal */}
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="max-w-5xl p-0 bg-card border border-white/10 overflow-hidden max-h-[90vh]">
+        <DialogContent className="max-w-5xl p-0 bg-deep-purple/90 border border-white/10 overflow-hidden max-h-[90vh] w-[90%] sm:w-[85%]">
           <AnimatePresence>
             {selectedProject && (
               <motion.div
@@ -178,8 +174,7 @@ const Portfolio = () => {
                 transition={{ duration: 0.3 }}
                 className="flex flex-col lg:flex-row w-full h-full overflow-auto"
               >
-                {/* Left side - GIF display */}
-                <div className="lg:w-1/2 p-6 flex items-center justify-center">
+                <div className="lg:w-1/2 p-4 sm:p-6 flex items-center justify-center">
                   <div className="rounded-lg overflow-hidden border border-white/10 shadow-xl">
                     <img 
                       src={selectedProject.gifUrl} 
@@ -189,8 +184,7 @@ const Portfolio = () => {
                   </div>
                 </div>
 
-                {/* Right side - Case study details */}
-                <div className="lg:w-1/2 p-6 lg:pl-0 flex flex-col h-full overflow-y-auto">
+                <div className="lg:w-1/2 p-4 sm:p-6 lg:pl-0 flex flex-col h-full overflow-y-auto">
                   <div className="flex justify-between items-start mb-4">
                     <div>
                       <span className="text-xs text-accent">{selectedProject.category}</span>
@@ -202,7 +196,7 @@ const Portfolio = () => {
                     </DialogClose>
                   </div>
                   
-                  <div className="space-y-6">
+                  <div className="space-y-4 sm:space-y-6">
                     <div>
                       <h4 className="text-sm font-semibold text-muted-foreground mb-2">Project Description</h4>
                       <p className="text-foreground">{selectedProject.description}</p>
@@ -234,12 +228,6 @@ const Portfolio = () => {
                       <p className="text-foreground">{selectedProject.outcome}</p>
                     </div>
                   </div>
-                  
-                  <div className="mt-auto pt-6">
-                    <Button variant="default" className="w-full">
-                      See Full Case Study <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </div>
                 </div>
               </motion.div>
             )}
@@ -270,7 +258,6 @@ const ProjectCard = ({ project, onViewCaseStudy }: ProjectCardProps) => {
             project.image
           )}
         >
-          {/* Add reflection effect */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent opacity-20"></div>
           <div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-black/40 to-transparent"></div>
         </div>

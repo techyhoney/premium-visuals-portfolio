@@ -30,17 +30,16 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Floating Announcement Banner - Hidden on mobile */}
+      {/* Full Width Discount Banner */}
       <motion.div 
-        className="fixed w-full py-2.5 z-50 hidden sm:block"
+        className="fixed w-full py-2 z-50"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
         <motion.div 
-          className="mx-auto max-w-[600px] rounded-full bg-vivid-purple/20 border border-white/10 backdrop-blur-md px-4 py-2 flex justify-center items-center text-sm text-white"
+          className="w-full bg-vivid-purple/70 px-4 py-2 flex justify-center items-center text-sm text-white"
           animate={{ 
-            opacity: [0.8, 1, 0.8],
-            scale: [1, 1.02, 1]
+            opacity: [0.8, 1, 0.8]
           }}
           transition={{ 
             duration: 3, 
@@ -48,15 +47,15 @@ const Navbar = () => {
             ease: "easeInOut" 
           }}
         >
-          <TicketPercent className="h-4 w-4 mr-2 text-accent" />
+          <TicketPercent className="h-4 w-4 mr-2 text-white" />
           <span>🔥 Summer Special! 20% off all services until August 31st</span>
-          <Sparkles className="h-4 w-4 ml-2 text-accent" />
+          <Sparkles className="h-4 w-4 ml-2 text-white" />
         </motion.div>
       </motion.div>
       
       <header 
         className={cn(
-          "fixed top-8 sm:top-16 w-full z-40 transition-all duration-300 px-4",
+          "fixed top-8 w-full z-40 transition-all duration-300 px-4",
           isScrolled 
             ? "py-2" 
             : "py-3"

@@ -29,7 +29,9 @@ const Index = () => {
       <div className="absolute bottom-1/3 right-1/4 w-40 h-40 rounded-full bg-primary/15 blur-[80px] opacity-60 animate-pulse-soft delay-700 -z-10"></div>
       
       <Navbar />
-      <Hero />
+      <div className="pt-16">
+        <Hero />
+      </div>
       
       {/* Rest of the content with regular gradient backgrounds and consistent spacing */}
       <div className="relative overflow-hidden">
