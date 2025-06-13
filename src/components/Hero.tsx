@@ -91,7 +91,7 @@ const Hero = () => {
           className="backdrop-blur-sm"
         >
           <span className="inline-block py-1.5 px-4 rounded-full border border-accent/20 text-sm font-medium text-accent/90 bg-accent/5 shadow-[0_0_15px_rgba(146,118,255,0.1)] backdrop-blur-sm">
-            Premium Software Agency
+            oncefor-code once, works forever
           </span>
         </motion.div>
         

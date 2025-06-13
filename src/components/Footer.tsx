@@ -23,7 +23,7 @@ const Footer = () => {
           <div className="md:col-span-1">
             <a href="#" className="text-gradient font-bold text-2xl">oncefor</a>
             <p className="text-muted-foreground mt-4 max-w-xs leading-relaxed">
-              Premium software agency delivering exceptional digital experiences through custom development, no-code solutions, and AI automation.
+              oncefor-code once, works forever - delivering exceptional digital experiences through custom development, no-code solutions, and AI automation.
             </p>
             
             <div className="flex space-x-4 mt-6">
