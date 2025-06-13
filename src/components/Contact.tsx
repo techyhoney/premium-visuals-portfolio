@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar, Mail, MapPin, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -26,7 +25,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground mb-1">Email</p>
-                  <p className="font-medium">hello@stellardev.com</p>
+                  <p className="font-medium">hello@oncefor.com</p>
                 </div>
               </div>
               
@@ -36,7 +35,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground mb-1">Phone</p>
-                  <p className="font-medium">+1 (555) 123-4567</p>
+                  <p className="font-medium">+917009493850</p>
                 </div>
               </div>
               
@@ -46,12 +45,12 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground mb-1">Location</p>
-                  <p className="font-medium">San Francisco, CA</p>
+                  <p className="font-medium">Bengaluru, KA</p>
                 </div>
               </div>
             </div>
             
-            <div className="mt-12 pt-8 border-t border-white/10">
+            {/* <div className="mt-12 pt-8 border-t border-white/10">
               <p className="text-muted-foreground mb-6">Follow us on social media</p>
               <div className="flex space-x-4">
                 <a 
@@ -79,7 +78,7 @@ const Contact = () => {
                   </svg>
                 </a>
               </div>
-            </div>
+            </div> */}
           </div>
           
           <div className="md:col-span-3 glass-card rounded-xl p-8">

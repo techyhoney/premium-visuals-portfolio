@@ -1,4 +1,3 @@
-
 import { useRef } from 'react';
 import { cn } from "@/lib/utils";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
@@ -107,12 +106,6 @@ const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] 
         )}
       >
         <div className="flex items-center mb-4">
-          <div className={cn(
-            "w-12 h-12 rounded-full overflow-hidden mr-4",
-            testimonial.image
-          )}>
-            {/* Placeholder for client image */}
-          </div>
           <div>
             <h4 className="font-semibold">{testimonial.name}</h4>
             <p className="text-sm text-muted-foreground">{testimonial.role}</p>

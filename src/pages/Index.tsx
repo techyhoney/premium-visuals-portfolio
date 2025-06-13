@@ -5,7 +5,7 @@ import Portfolio from "@/components/Portfolio";
 import Process from "@/components/Process";
 import Comparison from "@/components/Comparison";
 import About from "@/components/About";
-import Pricing from "@/components/Pricing";
+// import Pricing from "@/components/Pricing";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
@@ -58,10 +58,12 @@ const Index = () => {
         <About />
       </div>
       
+      {/* Pricing section commented out as requested
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-bl from-primary/5 via-background to-accent/5 -z-20"></div>
         <Pricing />
       </div>
+      */}
       
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-tr from-accent/5 via-background to-primary/5 -z-20"></div>

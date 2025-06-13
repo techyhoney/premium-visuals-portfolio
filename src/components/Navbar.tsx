@@ -39,7 +39,7 @@ const Navbar = () => {
     { name: 'Portfolio', href: '#portfolio' },
     { name: 'Process', href: '#process' },
     { name: 'About', href: '#about' },
-    { name: 'Pricing', href: '#pricing' },
+    // { name: 'Pricing', href: '#pricing' },
     { name: 'FAQ', href: '#faq' },
   ];
 
@@ -82,7 +82,7 @@ const Navbar = () => {
       >
         <div className="max-w-[80%] mx-auto rounded-full backdrop-blur-xl bg-deep-purple/70 border border-white/10 shadow-lg shadow-vivid-purple/20 flex items-center justify-between px-6 py-2">
           <div className="flex-center">
-            <a href="#" className="text-gradient-cosmic font-bold text-xl">StellarDev</a>
+            <a href="#" className="text-gradient-cosmic font-bold text-xl">oncefor</a>
           </div>
 
           {/* Desktop Navigation */}

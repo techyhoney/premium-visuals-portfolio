@@ -120,12 +120,12 @@
     @apply bg-gradient-to-br from-white via-white/90 to-accent/80 bg-clip-text text-transparent;
   }
   
-  /* New more vibrant gradient for StellarDev */
+  /* New more vibrant gradient for oncefor */
   .text-gradient-vibrant {
     @apply bg-gradient-to-r from-[#F97316] via-[#D946EF] to-[#8B5CF6] bg-clip-text text-transparent;
   }
   
-  /* New cosmic gradient for StellarDev */
+  /* New cosmic gradient for oncefor */
   .text-gradient-cosmic {
     @apply bg-gradient-to-r from-[#00FFFF] via-[#D946EF] to-[#8B5CF6] bg-clip-text text-transparent;
     animation: text-shimmer 3s ease-in-out infinite alternate;

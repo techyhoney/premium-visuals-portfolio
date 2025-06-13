@@ -14,14 +14,14 @@ const Footer = () => {
       {/* Company name watermark - positioned lower to avoid text overlap */}
       <div className="absolute inset-0 flex items-center justify-center translate-y-[35%] opacity-[0.03] pointer-events-none">
         <span className="text-[20vw] font-bold tracking-tight text-white whitespace-nowrap">
-          StellarDev
+          oncefor
         </span>
       </div>
       
       <div className="max-container relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-14">
           <div className="md:col-span-1">
-            <a href="#" className="text-gradient font-bold text-2xl">StellarDev</a>
+            <a href="#" className="text-gradient font-bold text-2xl">oncefor</a>
             <p className="text-muted-foreground mt-4 max-w-xs leading-relaxed">
               Premium software agency delivering exceptional digital experiences through custom development, no-code solutions, and AI automation.
             </p>
@@ -66,16 +66,16 @@ const Footer = () => {
             <h4 className="font-semibold mb-5 text-lg">Contact</h4>
             <ul className="space-y-3">
               <li><a href="#contact" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">Schedule a Call</a></li>
-              <li><a href="mailto:hello@stellardev.com" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">hello@stellardev.com</a></li>
-              <li><a href="tel:+15551234567" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">+1 (555) 123-4567</a></li>
-              <li><span className="text-muted-foreground text-sm">San Francisco, CA</span></li>
+              <li><a href="mailto:hello@oncefor.com" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">hello@oncefor.com</a></li>
+              <li><a href="tel:+15551234567" className="text-muted-foreground hover:text-white transition-colors text-sm inline-block">+917009493850</a></li>
+              <li><span className="text-muted-foreground text-sm">Bengaluru, KA</span></li>
             </ul>
           </div>
         </div>
         
         <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center">
           <p className="text-muted-foreground text-sm">
-            &copy; {new Date().getFullYear()} StellarDev. All rights reserved.
+            &copy; {new Date().getFullYear()} oncefor. All rights reserved.
           </p>
           
           <div className="flex space-x-6 mt-6 md:mt-0">

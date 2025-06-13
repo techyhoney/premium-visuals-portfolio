@@ -1,4 +1,3 @@
-
 import { cn } from "@/lib/utils";
 import { ArrowRight, Github, Linkedin, Twitter } from "lucide-react";
 
@@ -14,12 +13,13 @@ const About = () => {
               With over a decade of experience in software development, our founder has worked with startups and Fortune 500 companies alike, bringing a wealth of knowledge and expertise to every project.
             </p>
             <p className="text-muted-foreground mt-4">
-              After leading teams at major tech companies, they founded StellarDev with a mission to deliver premium digital solutions that combine technical excellence with exceptional design.
+              After leading teams at major tech companies, they founded oncefor with a mission to deliver premium digital solutions that combine technical excellence with exceptional design.
             </p>
             <p className="text-muted-foreground mt-4">
               Their approach blends cutting-edge technology with human-centered design principles, ensuring that every product not only looks beautiful but delivers tangible business results.
             </p>
             
+            {/* Social Icons - Commented out as requested
             <div className="mt-8 flex space-x-4">
               <a 
                 href="#" 
@@ -40,12 +40,15 @@ const About = () => {
                 <Github size={18} />
               </a>
             </div>
+            */}
             
+            {/* Read full story button - Commented out as requested
             <div className="mt-8">
               <a href="#" className="inline-flex items-center text-primary font-medium hover:underline">
                 Read full story <ArrowRight className="ml-2 h-4 w-4" />
               </a>
             </div>
+            */}
           </div>
           
           <div className="relative">
@@ -54,10 +57,12 @@ const About = () => {
                 "w-full h-full rounded-2xl overflow-hidden",
                 "bg-gradient-to-br from-accent/30 to-primary/30"
               )}>
-                {/* Placeholder for founder image */}
-                <div className="w-full h-full flex items-center justify-center text-white/30">
-                  Founder Image
-                </div>
+                {/* Founder image */}
+                <img 
+                  src="/images/founder-image.png" 
+                  alt="Founder" 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
             
@@ -65,7 +70,7 @@ const About = () => {
             <div className="absolute -bottom-6 -right-6 glass-card rounded-xl p-6 max-w-[240px]">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-3xl font-bold text-primary">10+</p>
+                  <p className="text-3xl font-bold text-primary">5+</p>
                   <p className="text-sm text-muted-foreground">Years Experience</p>
                 </div>
                 <div>
@@ -77,8 +82,8 @@ const About = () => {
                   <p className="text-sm text-muted-foreground">Happy Clients</p>
                 </div>
                 <div>
-                  <p className="text-3xl font-bold text-primary">12+</p>
-                  <p className="text-sm text-muted-foreground">Awards Won</p>
+                  <p className="text-3xl font-bold text-primary">10+</p>
+                  <p className="text-sm text-muted-foreground">Industries Served</p>
                 </div>
               </div>
             </div>

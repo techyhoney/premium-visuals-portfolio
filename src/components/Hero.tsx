@@ -1,4 +1,3 @@
-
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { PhoneCall } from "lucide-react";
@@ -141,7 +140,7 @@ const Hero = () => {
             variant="link" 
             className="text-white/80 hover:text-white transition-colors duration-300"
           >
-            Learn about our services
+            <a href="#services">Learn about our services</a>
           </Button>
         </motion.div>
         
@@ -180,7 +179,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.15, translateY: -5 }}
                 transition={{ duration: 0.2 }}
               >
-                <span className="text-xs font-medium">+60K</span>
+                <span className="text-xs font-medium">+60</span>
                 <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent opacity-50" 
                     style={{ clipPath: "polygon(0 0, 100% 0, 100% 30%, 0 30%)" }}></div>
               </motion.div>

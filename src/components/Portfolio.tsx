@@ -1,78 +1,16 @@
-
 import { useRef, useEffect, useState } from 'react';
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, X } from "lucide-react";
+import { ArrowRight, X, ChevronLeft, ChevronRight, ExternalLink, Github } from "lucide-react";
 import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
 import { motion, AnimatePresence } from "framer-motion";
-
-const projects = [
-  {
-    id: 1,
-    title: "Fintech Dashboard",
-    category: "Web Application",
-    image: "bg-gradient-to-br from-violet-500/20 to-purple-700/20",
-    description: "A comprehensive financial management platform with real-time analytics.",
-    gifUrl: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHJhd3Z5aWdjbjBrZThpaGw3NXR1dzJuejVqaW1pOGNzbXI0a2g5MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oKIPEqDGUULpEU0aQ/giphy.gif",
-    techStack: ["React", "TypeScript", "Tailwind CSS", "Node.js", "MongoDB"],
-    challenges: "Creating intuitive data visualization components while ensuring real-time updates without performance degradation.",
-    solutions: "Implemented optimized React components with memoization and leveraged WebSockets for efficient real-time data transfer.",
-    outcome: "50% increase in user engagement and 30% reduction in analysis time for financial advisors using the platform."
-  },
-  {
-    id: 2,
-    title: "E-commerce Platform",
-    category: "Shopify",
-    image: "bg-gradient-to-br from-blue-500/20 to-cyan-600/20",
-    description: "Custom Shopify solution with advanced product filtering and checkout.",
-    gifUrl: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTRrN3V6b2dzbzdqZ3NucGdkaGprOG1qemFmbmJnaGJoY2hrbmxqZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Vn9QTgaRhQTF8QWIir/giphy.gif",
-    techStack: ["Shopify Liquid", "JavaScript", "CSS", "Shopify APIs", "GraphQL"],
-    challenges: "Building a custom filtering system that maintained performance with large inventory catalogs.",
-    solutions: "Created a client-side filtering algorithm with intelligent caching and pagination to handle thousands of products efficiently.",
-    outcome: "Conversion rate improved by 25% and average order value increased by 15% after implementation."
-  },
-  {
-    id: 3,
-    title: "AI Content Creator",
-    category: "SaaS Platform",
-    image: "bg-gradient-to-br from-emerald-500/20 to-green-600/20",
-    description: "AI-powered platform for generating marketing content at scale.",
-    gifUrl: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExanZwNnJkY3djbDJuYWYxYWV4MWl3NmE2dzhhdzYxczFnYnNuN2xzNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26tn33aiTi1jkl6H6/giphy.gif",
-    techStack: ["Next.js", "Python", "OpenAI API", "AWS Lambda", "PostgreSQL"],
-    challenges: "Balancing generation quality with response time while managing API costs at scale.",
-    solutions: "Developed a hybrid caching system with pre-generation of common content types and intelligent request batching.",
-    outcome: "Content creation time reduced by 85% for marketing teams while maintaining high quality and brand consistency."
-  },
-  {
-    id: 4,
-    title: "Healthcare Portal",
-    category: "Web Application",
-    image: "bg-gradient-to-br from-red-500/20 to-rose-600/20",
-    description: "Patient management system with scheduling and telehealth features.",
-    gifUrl: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjN1emlibXU5Z2I4bjdvaHlnODNncmd5ajlycW41ejN4aWc2ODR3dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JmJMzYQvOGRTJnFnDw/giphy.gif",
-    techStack: ["React", "Node.js", "Express", "MongoDB", "WebRTC", "HIPAA Compliance Tools"],
-    challenges: "Ensuring HIPAA compliance while creating a seamless telehealth experience with reliable video streaming.",
-    solutions: "Implemented end-to-end encryption and secure data storage alongside optimized WebRTC connections for various network conditions.",
-    outcome: "Enabled the clinic to serve 200% more patients during the pandemic with a 98% satisfaction rate for telehealth visits."
-  },
-  {
-    id: 5,
-    title: "Real Estate Marketplace",
-    category: "No-Code Solution",
-    image: "bg-gradient-to-br from-amber-500/20 to-yellow-600/20",
-    description: "Property listing platform built with no-code tools and custom integrations.",
-    gifUrl: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHJ3dTYyNGl1bXQ2dTM0NjU1NmZ4MzBzNWVrcmR2ZWxvY2dodGRqYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0HlTU9KcSYkXmtyg/giphy.gif",
-    techStack: ["Webflow", "Zapier", "Airtable", "Make.com", "Custom JavaScript"],
-    challenges: "Creating advanced search functionality and integrating with MLS listings within no-code constraints.",
-    solutions: "Developed custom JavaScript modules to enhance the no-code platform capabilities and built automated workflows for data synchronization.",
-    outcome: "Reduced development costs by 70% while launching in 4 weeks instead of the original 3-month timeline."
-  }
-];
+import { projects, Project } from "@/data/projects";
 
 const Portfolio = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current;
@@ -116,9 +54,24 @@ const Portfolio = () => {
     };
   }, []);
 
-  const openModal = (project: typeof projects[0]) => {
+  const openModal = (project: Project) => {
     setSelectedProject(project);
+    setCurrentImageIndex(0);
     setIsModalOpen(true);
+  };
+
+  const nextImage = () => {
+    if (!selectedProject) return;
+    setCurrentImageIndex((prev) => 
+      prev === selectedProject.images.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevImage = () => {
+    if (!selectedProject) return;
+    setCurrentImageIndex((prev) => 
+      prev === 0 ? selectedProject.images.length - 1 : prev - 1
+    );
   };
   
   return (
@@ -168,7 +121,7 @@ const Portfolio = () => {
 
       {/* Case Study Modal */}
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="max-w-5xl p-0 bg-card border border-white/10 overflow-hidden max-h-[90vh]">
+        <DialogContent className="max-w-6xl p-0 bg-card border border-white/10 overflow-hidden max-h-[90vh]">
           <AnimatePresence>
             {selectedProject && (
               <motion.div
@@ -178,15 +131,59 @@ const Portfolio = () => {
                 transition={{ duration: 0.3 }}
                 className="flex flex-col lg:flex-row w-full h-full overflow-auto"
               >
-                {/* Left side - GIF display */}
-                <div className="lg:w-1/2 p-6 flex items-center justify-center">
-                  <div className="rounded-lg overflow-hidden border border-white/10 shadow-xl">
+                {/* Left side - Image display with navigation */}
+                <div className="lg:w-1/2 p-6 flex flex-col">
+                  <div className="relative rounded-lg overflow-hidden border border-white/10 shadow-xl mb-4">
                     <img 
-                      src={selectedProject.gifUrl} 
-                      alt={`${selectedProject.title} preview`} 
+                      src={selectedProject.images[currentImageIndex]} 
+                      alt={`${selectedProject.title} - Image ${currentImageIndex + 1}`}
                       className="w-full h-auto object-cover"
+                      onError={(e) => {
+                        // Fallback to gradient background if image fails to load
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const parent = target.parentElement;
+                        if (parent) {
+                          parent.className += ' bg-gradient-to-br from-violet-500/20 to-purple-700/20 h-64 flex items-center justify-center';
+                          parent.innerHTML = '<span class="text-white/50">Project Image</span>';
+                        }
+                      }}
                     />
+                    
+                    {/* Image navigation arrows */}
+                    {selectedProject.images.length > 1 && (
+                      <>
+                        <button
+                          onClick={prevImage}
+                          className="absolute left-2 top-1/2 transform -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 hover:bg-black/70 flex items-center justify-center text-white transition-colors"
+                        >
+                          <ChevronLeft size={16} />
+                        </button>
+                        <button
+                          onClick={nextImage}
+                          className="absolute right-2 top-1/2 transform -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 hover:bg-black/70 flex items-center justify-center text-white transition-colors"
+                        >
+                          <ChevronRight size={16} />
+                        </button>
+                      </>
+                    )}
                   </div>
+                  
+                  {/* Image indicators */}
+                  {selectedProject.images.length > 1 && (
+                    <div className="flex justify-center gap-2">
+                      {selectedProject.images.map((_, index) => (
+                        <button
+                          key={index}
+                          onClick={() => setCurrentImageIndex(index)}
+                          className={cn(
+                            "w-2 h-2 rounded-full transition-colors",
+                            index === currentImageIndex ? "bg-accent" : "bg-white/30"
+                          )}
+                        />
+                      ))}
+                    </div>
+                  )}
                 </div>
 
                 {/* Right side - Case study details */}
@@ -234,12 +231,6 @@ const Portfolio = () => {
                       <p className="text-foreground">{selectedProject.outcome}</p>
                     </div>
                   </div>
-                  
-                  <div className="mt-auto pt-6">
-                    <Button variant="default" className="w-full">
-                      See Full Case Study <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </div>
                 </div>
               </motion.div>
             )}
@@ -251,7 +242,7 @@ const Portfolio = () => {
 };
 
 type ProjectCardProps = {
-  project: typeof projects[0];
+  project: Project;
   onViewCaseStudy: () => void;
 };
 
@@ -264,12 +255,28 @@ const ProjectCard = ({ project, onViewCaseStudy }: ProjectCardProps) => {
           "transition-all duration-300 hover:translate-y-[-5px] hover:shadow-[0_10px_25px_rgba(255,255,255,0.1)]"
         )}
       >
-        <div 
-          className={cn(
-            "h-[220px] md:h-[260px] w-full relative overflow-hidden",
-            project.image
+        <div className="h-[220px] md:h-[260px] w-full relative overflow-hidden">
+          {project.thumbnailImage ? (
+            <img 
+              src={project.thumbnailImage} 
+              alt={project.title}
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                // Fallback to gradient background if image fails to load
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                const parent = target.parentElement;
+                if (parent) {
+                  parent.className += ' bg-gradient-to-br from-violet-500/20 to-purple-700/20 flex items-center justify-center';
+                  parent.innerHTML = '<span class="text-white/50">Project Image</span>';
+                }
+              }}
+            />
+          ) : (
+            <div className="w-full h-full bg-gradient-to-br from-violet-500/20 to-purple-700/20 flex items-center justify-center">
+              <span className="text-white/50">Project Image</span>
+            </div>
           )}
-        >
           {/* Add reflection effect */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent opacity-20"></div>
           <div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-black/40 to-transparent"></div>
@@ -278,6 +285,7 @@ const ProjectCard = ({ project, onViewCaseStudy }: ProjectCardProps) => {
           <span className="text-xs text-accent mb-2">{project.category}</span>
           <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
           <p className="text-muted-foreground text-sm mb-4">{project.description}</p>
+          {/* View Case Study button commented out as requested
           <button 
             onClick={onViewCaseStudy}
             className="mt-auto text-sm font-medium text-primary flex items-center hover:text-accent transition-colors"
@@ -285,6 +293,7 @@ const ProjectCard = ({ project, onViewCaseStudy }: ProjectCardProps) => {
             View Case Study
             <ArrowRight className="ml-2 h-4 w-4" />
           </button>
+          */}
         </div>
       </div>
     </div>

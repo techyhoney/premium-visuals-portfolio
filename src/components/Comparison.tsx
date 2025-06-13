@@ -1,4 +1,3 @@
-
 import { Check, X, Code, Palette, ShoppingCart, BrainCircuit, Laptop, Gauge, ScreenShare, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -110,7 +109,7 @@ const Comparison = () => {
                 <th className="text-left pb-6 pl-4"></th>
                 <th className="pb-6">
                   <div className="glass-card rounded-lg py-3 px-4 text-center">
-                    <span className="text-gradient font-bold">✨ StellarDev</span>
+                    <span className="text-gradient font-bold">✨ oncefor</span>
                   </div>
                 </th>
                 {comparisonData.competitors.map((competitor, index) => (
